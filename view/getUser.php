@@ -5,7 +5,7 @@ $userData = null;
 $error = null;
 
 if (isset($_GET['id'])) {
-    $id = intval($_GET['id']); // Sanitizamos a número entero
+    $id = $_GET['id'];
 
     $userQuery = "SELECT id, name, last_name, email FROM user WHERE id = $id";
     $result = $conn->query($userQuery);
@@ -38,22 +38,26 @@ if (isset($_GET['id'])) {
 
   <?php if ($userData): ?>
     <h3>Datos del Usuario</h3>
-    <table>
+    <!-- <table>
       <tr>
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Email</th>
       </tr>
       <tr>
-        <td><?= htmlspecialchars($userData['name']) ?></td>
-        <td><?= htmlspecialchars($userData['last_name']) ?></td>
-        <td><?= htmlspecialchars($userData['email']) ?></td>
+        <td><?= $userData['name']?></td>
+        <td><?= $userData['last_name']?></td>
+        <td><?= $userData['email']?></td>
       </tr>
-    </table>
+    </table> -->
+    <p>Nombre: <?= $userData['name']?></p>
+    <p>Apellido: <?= $userData['last_name']?></p>
+    <p>Email: <?= $userData['email']?></p>
+
     <a href="updateUser.php?id=<?= $userData['id'] ?>">Editar</a>
-    <a href="deleteUser.html?id=<?= $userData['id'] ?>">Eliminar</a> 
+    <a href="deleteUser.php?id=<?= $userData['id'] ?>">Eliminar</a> 
   <?php elseif ($error): ?>
-    <p class="error"><?= $error ?></p>
+    <p class="error"><?= $error?></p>
   <?php endif; ?>
 </body>
 </html>

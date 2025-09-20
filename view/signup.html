@@ -36,33 +36,9 @@
           <input class="btn" type="submit" value="Enviar" />
         </div>
 
-        <div>
-          <h2 style="margin-top:0">¿Ya tenés cuenta?</h2>
-          <p class="muted">Iniciá sesión para reservar turnos y ver tu historial clínico.</p>
-          <p><a href="/mi_clinica/login.html">Ir al login →</a></p>
-        </div>
+       <p class="muted">¿Ya tienes cuenta? <a class="small" href="login.html">Iniciar sesión</a></p>
       </form>
   </main>
-
-  <script>
-    // Única función JS para validación simple
-    function validateRegister(){
-      const name = document.getElementById('name').value.trim();
-      const last = document.getElementById('last_name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const pwd = document.getElementById('password').value;
-      const role = document.getElementById('id_role').value;
-
-      if (!name || !last || !email || !pwd || !role){
-        alert('Completá todos los campos.');
-        return false;
-      }
-      if (pwd.length < 6){
-        alert('La contraseña debe tener al menos 6 caracteres.');
-        return false;
-      }
-      return true; // envía el formulario por POST
-    }
-  </script>
+  
 </body>
 </html>

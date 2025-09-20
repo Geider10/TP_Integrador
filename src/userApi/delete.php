@@ -5,8 +5,8 @@ $id = $_POST['id'];
 
 $deleteQuery = "DELETE FROM user WHERE id=$id";
 
-if ($conn->query($deleteQuery) === TRUE) {
-    header("Location: index.html"); // vuelve al inicio
+if ($conn->query($deleteQuery)) {
+    header("Location: ../../view/index.html");
     exit;
 } else {
     echo "Error al eliminar: " . $conn->error;
