@@ -1,7 +1,7 @@
 <?php
 $dbHost = "localhost";
 $dbUser = "root";
-$dbPass = "yoel1234";
+$dbPass = "hector2303";
 $dbName = "mi_clinic";
 
 // FRONT: usar formulario para hacer las consultas CRUD

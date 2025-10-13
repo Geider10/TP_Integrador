@@ -25,26 +25,10 @@
         <input class="btn" type="submit" value="Enviar" />
       </div>
 
-      <p class="muted">¿No tienes cuenta? <a class="small" href="/mi_clinica/register.html">Crear cuenta</a></p>
+      <p class="muted">¿No tienes cuenta? <a class="small" href="signup.html">Crear cuenta</a></p>
     </form>
   </main>
 
-  <script>
-    // Única función JS para validación simple
-    function validateLogin(){
-      const email = document.getElementById('email').value.trim();
-      const pwd = document.getElementById('password').value;
-      if (!email || !pwd){
-        alert('Completa email y contraseña.');
-        return false;
-      }
-      if (pwd.length < 6){
-        alert('La contraseña debe tener al menos 6 caracteres.');
-        return false;
-      }
-      // por simplicity se envía el formulario al backend (POST)
-      return true;
-    }
-  </script>
+ 
 </body>
 </html>
