@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+main {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    padding: 20px;
+    margin-top: 100px;
+  }
+  
+  .doctor-card {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr; /* Imagen | Info | Horarios */
+    gap: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    align-items: start;
+  }
+  
+  .doctor-image img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .doctor-info h2 {
+    color: #003366;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .doctor-info a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  
+  .doctor-info a:hover {
+    text-decoration: underline;
+  }
+  
+  .doctor-logo img {
+    width: 120px;
+    margin-top: 10px;
+  }
+  
+  .doctor-schedule {
+    background-color: #e6f1fa;
+    padding: 15px;
+    border-radius: 6px;
+  }
+  
+  .doctor-schedule h3 {
+    margin-bottom: 10px;
+    color: #003366;
+  }
+  
+  .doctor-schedule p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+  }
+  
+  .social a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    margin-right: 10px;
+  }
