@@ -1,5 +1,5 @@
 <?php       
-require("../src/db.php");
+require("../../src/db.php");
 
 $userData = null;
 $error = null;
@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
 <head>
   <meta charset="UTF-8">
   <title>Buscar Usuario</title>
-  <link rel="stylesheet" href="./style/getUser.css"/> 
+  <link rel="stylesheet" href="../style/userStyle/getUser.css"/> 
 </head>
 <body>
   <h2>Buscar Usuario</h2>

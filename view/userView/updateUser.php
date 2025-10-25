@@ -1,5 +1,5 @@
 <?php       
-require("../src/db.php");
+require("../../src/db.php");
 
 $userData = null;
 $id = $_GET['id'];
