@@ -24,8 +24,15 @@ $dbName = "mi_clinic";
 // PDF, Correo, Excel: este contenido se investiga por propia cuenta
 
 // Examen AWS: te cambia las preguntas, son ilimitadas.
+
+//no hace falta subirlo el proyecto filezilla,
+//comprimir el TP en un zip,
+//exportar la BD en un archivo sql,
+
 $conn = new mysqli ($dbHost, $dbUser, $dbPass, $dbName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 ?>
+
+
