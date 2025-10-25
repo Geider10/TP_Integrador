@@ -1,0 +1,187 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: #f9fdfc;
+  color: #333;
+  line-height: 1.6;
+}
+
+  /* Header */
+nav {
+    padding: 15px 50px;
+    background: #80f0f0; /* color aqua suave similar al de tu captura */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: 'Arial', sans-serif;
+}
+
+nav a {
+  color: #000000;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+nav a:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0px 0px 8px #FDB927);
+}
+.Login-Register a {
+  color: black;
+  padding: 10px;
+}
+.Login-Register {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #FDB927;
+}
+.Login-Register:hover {
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+}
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #4db6ac, #81d4fa);
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+.hero .btn {
+  background: #2e7d32;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.hero .btn:hover {
+  background: #1b5e20;
+}
+/* Secciones */
+main section {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+section h2 {
+  font-size: 2rem;
+  color: #00796b;
+  margin-bottom: 1.5rem;
+}
+/* Servicios */
+.servicios ul {
+  list-style: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.servicios li {
+  background: #e0f7fa;
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-weight: 500;
+}
+/* Médicos */
+.medicos .cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.medicos .card {
+  background: #ffffff;
+  border: 1px solid #cfd8dc;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 220px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.medicos .card:hover {
+  transform: scale(1.05);
+}
+/* Turnos */
+.turnos form {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: left;
+  background: #e8f5e9;
+  padding: 2rem;
+  border-radius: 10px;
+}
+.turnos label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  font-weight: bold;
+}
+.turnos input,
+.turnos select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+}
+.turnos button {
+  background: #2e7d32;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.turnos button:hover {
+  background: #1b5e20;
+}
+/* Contacto */
+.contacto p {
+  margin: 0.5rem 0;
+}
+/* Footer */
+footer {
+  background: #004d40;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+}
+footer .social-icons {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+footer .social-icons a {
+  color: white;
+  transition: color 0.3s;
+}
+footer .social-icons a:hover {
+  color: #81d4fa;
+}
+  .carousel-inner {
+    display: flex;
+    overflow: hidden;
+  }
+  
+  .carousel-item {
+    flex: 0 0 auto;
+    animation: slide 20s linear infinite;
+  }
+  
+  @keyframes slide {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+  

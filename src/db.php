@@ -21,10 +21,6 @@ $dbName = "mi_clinic";
 // Usar la variable de session para validar el rol por funcionalidad.
 
 // JS eventos: mensaje
-// PDF, Correo, Excel: este contenido se investiga por propia cuenta
-
-// Examen AWS: te cambia las preguntas, son ilimitadas.
-
 //no hace falta subirlo el proyecto filezilla,
 //comprimir el TP en un zip,
 //exportar la BD en un archivo sql,
