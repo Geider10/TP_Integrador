@@ -1,12 +1,14 @@
 <?php
 require("../db.php");
+session_start();
 
-$id = $_POST['id'];
-
+$id = $_GET['id'];
 $deleteQuery = "DELETE FROM user WHERE id=$id";
+$result = $conn->query($deleteQuery);
 
-if ($conn->query($deleteQuery)) {
-    header("Location: ../../view/index.html");
+if ($result) {
+    session_destroy();
+    header("Location: ../../view/index.php");
     exit;
 } else {
     echo "Error al eliminar: " . $conn->error;

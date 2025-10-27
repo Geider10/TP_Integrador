@@ -1,17 +1,13 @@
 <?php       
-require("../../src/db.php");
-
-$userData = null;
-$id = $_GET['id'];
-
-$userQuery = "SELECT id, name, last_name FROM user WHERE id = $id";
-$result = $conn->query($userQuery);
-
-if ($result && $result->num_rows > 0) {
-    $userData = $result->fetch_assoc();
+session_start(); 
+if (!isset($_SESSION["user_id"])) {
+  header("Location: ../index.html");
+  exit();
 }
 
-$conn->close();
+$id = $_SESSION["user_id"];
+$name = $_SESSION["user_name"];
+$lastName = $_SESSION["user_lastName"];
 ?>
 
 <!DOCTYPE html>
@@ -19,25 +15,27 @@ $conn->close();
 <head>
   <meta charset="UTF-8">
   <title>Editar Usuario</title>
-  <link rel="stylesheet" href="./style/updateUser.css"/> 
-
+  <link rel="stylesheet" href="../style/userStyle/updateUser.css"/> 
 </head>
 <body>
-  <h2>Editar Usuario</h2>
+  <div class="modal-content"> 
+    <h3>Editar Usuario</h3>
+    <form method="POST" action="../../src/userApi/update.php">
+        <input type="hidden" name="id" value="<?= $id?>">
 
-  <?php if ($userData): ?>
-    <form method="post" action="../src/userApi/update.php">
-      <input type="hidden" name="id" value="<?= $userData['id'] ?>">
+        <label>Nombre</label>
+        <input type="text" name="name" required value="<?= $name?>">
 
-      <label>Nombre</label>
-      <input type="text" name="name" required value="<?= $userData['name']?>">
+        <label>Apellido</label>
+        <input type="text" name="last_name" required value="<?= $lastName?>">
 
-      <label>Apellido</label>
-      <input type="text" name="last_name" required value="<?= $userData['last_name']?>">
-
-      <input type="submit" value="Enviar" />
+        <div class="modal-actions">
+            <button type="submit">Guardar Cambios</button>
+            <a href="./profile.php">Cancelar</a>
+        </div>
+       
     </form>
-  <?php endif; ?>
+  </div>
 
 </body>
 </html>

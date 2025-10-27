@@ -1,14 +1,18 @@
 <?php
 require("../db.php");
+session_start();
 
 $id = $_POST['id'];
 $name = $_POST['name'];
-$last_name = $_POST['last_name'];
+$lastName = $_POST['last_name'];
 
-$updateQuery = "UPDATE user SET name='$name', last_name='$last_name' WHERE id=$id";
+$updateQuery = "UPDATE user SET name='$name', last_name='$lastName' WHERE id=$id";
+$result = $conn->query($updateQuery);
 
-if ($conn->query($updateQuery)) {
-    header("Location: ../../view/getUser.php?id=$id");
+if ($result) {
+    $_SESSION["user_name"] = $name;
+    $_SESSION["user_lastName"] = $lastName;
+    header("Location: ../../view/userView/profile.php");
     exit;
 } else {
     echo "Error al actualizar: " . $conn->error;

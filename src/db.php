@@ -4,6 +4,10 @@ $dbUser = "root";
 $dbPass = "yoel1234";
 $dbName = "mi_clinic";
 
+$conn = new mysqli ($dbHost, $dbUser, $dbPass, $dbName);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 //reglas
 // FRONT: usar formulario para hacer las consultas CRUD
 // Formulario type post = Crear, editar
@@ -24,11 +28,19 @@ $dbName = "mi_clinic";
 //no hace falta subirlo el proyecto filezilla,
 //comprimir el TP en un zip,
 //exportar la BD en un archivo sql,
-
-$conn = new mysqli ($dbHost, $dbUser, $dbPass, $dbName);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+/*    <!-- <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+      </tr>
+      <tr>
+        <td><?= $name?></td>
+        <td><?= $lastName?></td>
+        <td><?= $email?></td>
+      </tr>
+    </table> -->
+*/
 ?>
 
 

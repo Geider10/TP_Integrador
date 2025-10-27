@@ -9,39 +9,54 @@ body {
   color: #333;
   line-height: 1.6;
 }
-
   /* Header */
-nav {
-    padding: 15px 50px;
-    background: #80f0f0; /* color aqua suave similar al de tu captura */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    font-family: 'Arial', sans-serif;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;             
+  background-color: #f8f8f8;
+  padding: 10px 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-nav a {
-  color: #000000;
+.logo h1 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
   text-decoration: none;
-  transition: all 0.3s;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
 }
-nav a:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0px 0px 8px #FDB927);
+
+.nav-links a:hover {
+  color: #007bff;
 }
-.Login-Register a {
-  color: black;
-  padding: 10px;
+.login-btn{
+  display: block;
 }
-.Login-Register {
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #FDB927;
+.login-btn a {
+  display: block;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
 }
-.Login-Register:hover {
-  background-color: rgb(255, 255, 255);
-  color: #000000;
+
+.login-btn a:hover {
+  background-color: #0056b3;
 }
 /* Hero */
 .hero {
