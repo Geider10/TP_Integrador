@@ -26,6 +26,7 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
     <nav class="nav-links">
       <a href="#">Inicio</a>
       <a href="#">Turnos</a>
+      <a href="#">Gestionar</a>
       <a href="#">Acerca de Nosotros</a>
     </nav>
     <?php if (!$isLogedIn): ?>

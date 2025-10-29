@@ -28,19 +28,6 @@ if ($conn->connect_error) {
 //no hace falta subirlo el proyecto filezilla,
 //comprimir el TP en un zip,
 //exportar la BD en un archivo sql,
-/*    <!-- <table>
-      <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Email</th>
-      </tr>
-      <tr>
-        <td><?= $name?></td>
-        <td><?= $lastName?></td>
-        <td><?= $email?></td>
-      </tr>
-    </table> -->
-*/
-?>
+
 
 
