@@ -1,26 +1,27 @@
 :root {
     --bg: #f7fafc;
     --card: #ffffff;
-    --accent: #0f766e;
+    --accent: #2b6cb0;
     --muted: #6b7280;
     --radius: 10px;
     --shadow: 0 8px 26px rgba(15, 23, 42, 0.06);
     font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
-
+html,body{
+    height: 100%;
+}
 body {
     margin: 0;
-    background: linear-gradient(180deg, #f0fdfa, var(--bg));
+    background: linear-gradient(180deg, #e8f0ff 0%, var(--bg) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 28px;
-    height: 100%;
 }
 
 .card {
     width: 100%;
-    max-width: 500px;
+    max-width: 440px;
     background: var(--card);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
@@ -45,8 +46,7 @@ label {
     color: #0f172a
 }
 
-input,
-select {
+input{
     width: 100%;
     padding: 10px 12px;
     border: 1px solid #e6eef0;
@@ -78,8 +78,15 @@ input:focus {
 }
 
 .muted {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 8px
-}
+     font-size: 13px;
+     color: var(--muted);
+     margin-top: 12px;
+     text-align: center
+ }
+
+ a.small {
+     color: var(--accent);
+     text-decoration: none;
+     font-weight: 600
+ }
 

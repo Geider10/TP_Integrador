@@ -17,7 +17,7 @@ $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 $addQuery = "INSERT INTO user (name, last_name, email, password, id_role) VALUES ('$name', '$lastName', '$email', '$passwordHash', $idRole)";
 
 if ($conn->query($addQuery)) {
-    header("Location: ../../view/login.html");
+    header("Location: ../../view/userView/login.html");
 }
 
 $conn->close();
