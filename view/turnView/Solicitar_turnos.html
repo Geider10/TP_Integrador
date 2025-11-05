@@ -1,55 +1,64 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<title>Solicitar Turno Médico</title>
-<link rel="stylesheet" href="style/Solicitar_turnos.css">
-</head>
-<body>
-<h2>Solicitar Turno Médico</h2>
-
-<form method="POST" action="../turnApi/createTurn.php">
-  <label for="especialidad">Especialidad:</label>
-  <select id="especialidad" name="especialidad" required>
-    <option value="">Seleccione una especialidad</option>
-    <!-- <?php
-    include("../db.php");
-    $especialidades = $conn->query("SELECT * FROM especialidades ORDER BY nombre");
-    while($e = $especialidades->fetch_assoc()){
-      echo "<option value='{$e['id']}'>{$e['nombre']}</option>";
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style/Solicitar_turnos.css">
+        <title>Solicitar turnos</title>
+    </head>
+    <body>
+        <h2>Solicitar Turno Médico</h2>
+        <form method="POST" action="/src/turnAPi/crear_turnos.php">
+            <label for="especialidad">Especialidad:</label>
+            <select id="especialidad" name="especialidad" required>
+                <option value="">Seleccione una especialidad</option>
+                <!-- <?php
+      include("../db.php");
+      $especialidades = $conn->query("SELECT * FROM especialidades ORDER BY nombre");
+      while($e = $especialidades->fetch_assoc()){
+        echo "<option value='{$e['id']}'>{$e['nombre']}</option>";
+      }
+      ?> -->
+            </select>
+            <label for="doctor">Doctor:</label>
+            <select id="doctor" name="doctor" required>
+                <option value="">Seleccione una especialidad primero</option>
+            </select>
+            <label for="paciente">Paciente:</label>
+            <input
+                type="text"
+                id="paciente"
+                name="paciente"
+                required
+            >
+            <label for="fecha">Fecha:</label>
+            <input
+                type="date"
+                id="fecha"
+                name="fecha"
+                required
+            >
+            <label for="hora">Hora:</label>
+            <input
+                type="time"
+                id="hora"
+                name="hora"
+                required
+            >
+            <button type="submit">Guardar Turno</button>
+        </form>
+        <script>
+  document.getElementById("especialidad").addEventListener("change", function() {
+    const idEsp = this.value;
+    const selectDoc = document.getElementById("doctor");
+    if(idEsp){
+      fetch("../turnApi/createTurn.php?especialidad=" + idEsp)
+        .then(r => r.text())
+        .then(d => selectDoc.innerHTML = d);
+    } else {
+      selectDoc.innerHTML = "<option value=''>Seleccione una especialidad primero</option>";
     }
-    ?> -->
-  </select>
-
-  <label for="doctor">Doctor:</label>
-  <select id="doctor" name="doctor" required>
-    <option value="">Seleccione una especialidad primero</option>
-  </select>
-
-  <label for="paciente">Paciente:</label>
-  <input type="text" id="paciente" name="paciente" required>
-
-  <label for="fecha">Fecha:</label>
-  <input type="date" id="fecha" name="fecha" required>
-
-  <label for="hora">Hora:</label>
-  <input type="time" id="hora" name="hora" required>
-
-  <button type="submit">Guardar Turno</button>
-</form>
-
-<script>
-document.getElementById("especialidad").addEventListener("change", function() {
-  const idEsp = this.value;
-  const selectDoc = document.getElementById("doctor");
-  if(idEsp){
-    fetch("../turnApi/createTurn.php?especialidad=" + idEsp)
-      .then(r => r.text())
-      .then(d => selectDoc.innerHTML = d);
-  } else {
-    selectDoc.innerHTML = "<option value=''>Seleccione una especialidad primero</option>";
-  }
-});
-</script>
-</body>
+  });
+        </script>
+    </body>
 </html>

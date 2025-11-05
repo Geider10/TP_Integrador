@@ -1,34 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Iniciar sesión - Mi Clínica</title>
-  <link rel="stylesheet" href="../style/userStyle/login.css" /> 
-</head>
-<body>
-  <main class="card">
-    <h1>Iniciar sesión</h1>
-
-    <form id="loginForm" action="../../src/userApi/login.php" method="POST">
-      <div class="form-group">
-        <label for="email">Correo electrónico</label>
-        <input id="email" name="email" type="email" placeholder="tu@correo.com" required />
-      </div>
-
-      <div class="form-group">
-        <label for="password">Contraseña</label>
-        <input id="password" name="password" type="password" placeholder="••••••••" required />
-      </div>
-
-      <div class="form-group actions">
-        <input class="btn" type="submit" value="Enviar" />
-      </div>
-
-      <p class="muted">¿No tienes cuenta? <a class="small" href="signup.html">Crear cuenta</a></p>
-    </form>
-  </main>
-
- 
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Iniciar sesión - Mi Clínica</title>
+        <link rel="stylesheet" href="../style/userStyle/login.css">
+    </head>
+    <body>
+        <main class="card">
+            <h1>Iniciar sesión</h1>
+            <form id="loginForm" action="../../src/userApi/login.php" method="POST">
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="tu@correo.com"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="••••••••"
+                        required
+                    >
+                </div>
+                <div class="form-group actions">
+                    <input class="btn" type="submit" value="Enviar">
+                </div>
+                <p class="muted">¿No tienes cuenta?
+                    <a class="small" href="signup.html">Crear cuenta</a>
+                </p>
+            </form>
+        </main>
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-info">
+                    <h3>Clínica Salud Total</h3>
+                    <p>Av. San Martín 1234, Buenos Aires</p>
+                    <p>Tel: (011) 4567-8900</p>
+                    <p>Email: contacto@saludtotal.com</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces útiles</h4>
+                    <ul>
+                        <li>
+                            <a href="#">Contacto</a>
+                        </li>
+                        <li>
+                            <a href="#">Nosotros</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Seguinos</h4>
+                    <a href="#">
+                        <img src="img/facebook.svg" alt="Facebook">
+                    </a>
+                    <a href="#">
+                        <img src="img/instagram.svg" alt="Instagram">
+                    </a>
+                    <a href="#">
+                        <img src="img/twitterx.svg" alt="Twitter">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Hospital Central — Todos los derechos reservados</p>
+            </div>
+        </footer>
+    </body>
 </html>

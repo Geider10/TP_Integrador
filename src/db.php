@@ -7,7 +7,9 @@ $dbName = "mi_clinic";
 $conn = new mysqli ($dbHost, $dbUser, $dbPass, $dbName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+    
 }
+
 //reglas
 // FRONT: usar formulario para hacer las consultas CRUD
 // Formulario type post = Crear, editar
