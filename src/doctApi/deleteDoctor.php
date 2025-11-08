@@ -1,16 +1,20 @@
 <?php
 require_once '../db.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];
+if (!isset($_POST['id']) || empty($_POST['id'])) {
+    die("Error: no se recibió el ID del doctor.");
+}
 
-    $stmt = $conn->prepare("DELETE FROM doctores WHERE id = ?");
-    $stmt->bind_param("i", $id);
+$id = intval($_POST['id']);
 
-    if ($stmt->execute()) {
-        header("Location: ../../view/doctorView/doctores.php");
-    } else {
-        echo "Error al borrar: " . $conn->error;
-    }
+$sql = "DELETE FROM doctores WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id);
+
+if ($stmt->execute()) {
+    header("Location: ../../public/view/doctores.php?msg=deleted");
+    exit();
+} else {
+    die("Error al eliminar: " . $conn->error);
 }
 ?>

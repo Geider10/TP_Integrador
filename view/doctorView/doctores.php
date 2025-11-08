@@ -8,17 +8,18 @@ $userRole = $isLogedIn ? $_SESSION['user_role'] : null;
 
 require_once '../../src/db.php'; // conexión a la BD
 
-// Obtener doctores desde la base de datos
-$query = $conn->query("SELECT * FROM doctores ORDER BY id DESC");
+// Obtener doctores con su especialidad (JOIN con tabla especialidades)
+$query = $conn->query("
+  SELECT d.id, d.nombre, d.imagen, e.nombre AS especialidad
+  FROM doctores d
+  INNER JOIN especialidades e ON d.id_especialidad = e.id
+  ORDER BY d.id DESC
+");
 $doctores = $query->fetch_all(MYSQLI_ASSOC);
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
-
 
 <head>
   <meta charset="UTF-8">
@@ -36,7 +37,7 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
 
     <nav class="nav-links">
       <a href="../index.php">Inicio</a>
-      <a href="../turnView/Solicitar_turnos.html">Turnos</a>
+      <a href="../turnView/Solicitar_turnos.php">Turnos</a>
       <a href="#">Gestionar</a>
       <a href="#">Acerca de Nosotros</a>
     </nav>
@@ -68,15 +69,26 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
     <button onclick="mostrarFormulario('editar')" class="editar">Editar-Doc</button>
   </div>
   <?php endif; ?>
-
   <div id="formularios" class="container mt-3">
+
     <!-- Formulario Agregar -->
     <div class="formulario" id="form-agregar" style="display:none;">
       <h3>➕ Nuevo Doctor</h3>
       <form action="../../src/doctApi/createDoctor.php" method="POST">
-        <input type="text" name="name" placeholder="Nombre del doctor" required><br>
-        <input type="text" name="especialidad" placeholder="Especialidad" required><br>
+        <input type="text" name="nombre" placeholder="Nombre del doctor" required><br>
         <input type="text" name="imagen" placeholder="URL de imagen" required><br>
+
+        <!-- Selección de especialidad -->
+        <select name="id_especialidad" required>
+          <option value="">Seleccione una especialidad</option>
+          <?php
+        $esp = $conn->query("SELECT * FROM especialidades ORDER BY nombre ASC");
+        while ($e = $esp->fetch_assoc()):
+      ?>
+          <option value="<?= $e['id'] ?>"><?= htmlspecialchars($e['nombre']) ?></option>
+          <?php endwhile; ?>
+        </select><br>
+
         <button type="submit" class="btn btn-success mt-2">Guardar</button>
       </form>
     </div>
@@ -90,26 +102,27 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
       </form>
     </div>
 
-
     <!-- Formulario Editar -->
     <div class="formulario" id="form-editar" style="display:none;">
-      <?php
-        // Si venimos desde editar, obtenemos los datos
-        if (isset($_GET['id'])) {
-          require_once '../../src/doctApi/getDoctorById.php'; // o como se llame tu archivo
-          $doctor = getDoctorById($_GET['id']); // función que devuelve el doctor por ID
-      }
-      ?>
       <h3>✏️ Editar Doctor</h3>
       <form action="../../src/doctApi/updateDoctor.php" method="POST">
         <input type="number" name="id" placeholder="ID del doctor" required><br>
-        <input type="text" name="nombre" placeholder="Nuevo nombre"><br>
-        <input type="text" name="especialidad" placeholder="Nueva especialidad"><br>
-        <input type="text" name="imagen" placeholder="Nueva URL de imagen"><br>
-        <button type="submit">Actualizar</button>
+        <input type="text" name="nombre" placeholder="Nuevo nombre (opcional)"><br>
+        <input type="text" name="imagen" placeholder="Nueva URL de imagen (opcional)"><br>
+
+        <!-- Nuevo: cambiar especialidad -->
+        <select name="id_especialidad">
+          <option value="">(Sin cambios)</option>
+          <?php
+        $esp2 = $conn->query("SELECT * FROM especialidades ORDER BY nombre ASC");
+        while ($e2 = $esp2->fetch_assoc()):
+      ?>
+          <option value="<?= $e2['id'] ?>"><?= htmlspecialchars($e2['nombre']) ?></option>
+          <?php endwhile; ?>
+        </select><br>
+
+        <button type="submit" class="btn btn-primary mt-2">Actualizar</button>
       </form>
-
-
     </div>
   </div>
 
@@ -132,7 +145,7 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
           <div class="card-body">
             <h5 class="card-title"><?= htmlspecialchars($doc['nombre']) ?></h5>
             <p class="card-text"><strong>Especialidad:</strong> <?= htmlspecialchars($doc['especialidad']) ?></p>
-            <a href="../turnView/Solicitar_turnos.html" class="btn btn-outline-primary">Solicitar turno</a>
+            <a href="../turnView/Solicitar_turnos.php" class="btn btn-outline-primary">Solicitar turno</a>
           </div>
         </div>
       </div>

@@ -1,35 +1,30 @@
 <?php
 require_once '../db.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = intval($_POST['id']);
+$id = $_POST['id'];
+$nombre = $_POST['nombre'] ?? null;
+$imagen = $_POST['imagen'] ?? null;
+$id_especialidad = $_POST['id_especialidad'] ?? null;
 
-    // Buscar el registro actual
-    $query = $conn->prepare("SELECT * FROM doctores WHERE id = ?");
-    $query->bind_param("i", $id);
-    $query->execute();
-    $result = $query->get_result();
+// Obtener datos actuales
+$stmt = $conn->prepare("SELECT * FROM doctores WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$doctor = $stmt->get_result()->fetch_assoc();
 
-    if ($result->num_rows === 0) {
-        die("Error: Doctor no encontrado.");
-    }
-
-    $doctorActual = $result->fetch_assoc();
-
-    // Mantener valores anteriores si no se envían nuevos
-    $nombre = !empty($_POST['nombre']) ? $_POST['nombre'] : $doctorActual['nombre'];
-    $especialidad = !empty($_POST['especialidad']) ? $_POST['especialidad'] : $doctorActual['especialidad'];
-    $imagen = !empty($_POST['imagen']) ? $_POST['imagen'] : $doctorActual['imagen'];
-
-    // Actualizar con los nuevos datos
-    $update = $conn->prepare("UPDATE doctores SET nombre = ?, especialidad = ?, imagen = ? WHERE id = ?");
-    $update->bind_param("sssi", $nombre, $especialidad, $imagen, $id);
-
-    if ($update->execute()) {
-        header("Location: ../../view/doctorView/doctores.php?mensaje=actualizado");
-        exit;
-    } else {
-        echo "Error al actualizar: " . $conn->error;
-    }
+if (!$doctor) {
+  die("❌ Doctor no encontrado");
 }
+
+// Mantener datos anteriores si no se actualizan
+$nombre = $nombre ?: $doctor['nombre'];
+$imagen = $imagen ?: $doctor['imagen'];
+$id_especialidad = $id_especialidad ?: $doctor['id_especialidad'];
+
+$stmt = $conn->prepare("UPDATE doctores SET nombre = ?, imagen = ?, id_especialidad = ? WHERE id = ?");
+$stmt->bind_param("ssii", $nombre, $imagen, $id_especialidad, $id);
+$stmt->execute();
+
+header("Location: ../../view/doctorView/doctores.php");
+exit();
 ?>

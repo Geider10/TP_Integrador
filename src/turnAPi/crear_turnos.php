@@ -1,23 +1,24 @@
 <?php
-include("../db.php");
+require_once("../db.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $id_especialidad = $_POST["especialidad"];
-    $id_doctor = $_POST["doctor"];
-    $paciente = trim($_POST["paciente"]);
-    $fecha = $_POST["fecha"];
-    $hora = $_POST["hora"];
+    $id_especialidad = $_POST["id_especialidad"] ?? null;
+    $id_doctor = $_POST["id_doctor"] ?? null;
+    $paciente = trim($_POST["paciente"] ?? '');
+    $fecha = $_POST["fecha"] ?? null;
+    $hora = $_POST["hora"] ?? null;
 
     if ($id_especialidad && $id_doctor && $paciente && $fecha && $hora) {
-        $sql = "INSERT INTO turnos (id_doctor, id_especialidad, paciente, fecha, hora)
-                VALUES ('$id_doctor', '$id_especialidad', '$paciente', '$fecha', '$hora')";
-        if ($conn->query($sql)) {
-            header("Location: ../view/Solicitar_turnos.html?success=1");
+        $stmt = $conn->prepare("INSERT INTO turnos (id_especialidad, id_doctor, paciente, fecha, hora) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("iisss", $id_especialidad, $id_doctor, $paciente, $fecha, $hora);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('Turno guardado correctamente'); window.location.href='../../pages/turnos/listar_turnos.php';</script>";
         } else {
-            echo "Error al guardar: " . $conn->error;
+            echo "<script>alert('Error al guardar el turno'); window.history.back();</script>";
         }
     } else {
-        echo "Complete todos los campos.";
+        echo "<script>alert('Complete todos los campos'); window.history.back();</script>";
     }
 }
 ?>
