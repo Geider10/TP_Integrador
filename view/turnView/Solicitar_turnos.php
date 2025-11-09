@@ -13,7 +13,6 @@ $especialidades = $conn->query("SELECT * FROM especialidades ORDER BY nombre");
   <main >
     <a  href="../doctorView/doctores.php">Volver</a>
     <h2>Solicitar Turno Médico</h2>
-    <h1>Clínica Central</h1>
   </main>
 
   <form method="POST" action="../../src/turnApi/crear_turnos.php">
