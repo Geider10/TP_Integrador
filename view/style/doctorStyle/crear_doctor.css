@@ -1,0 +1,74 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-crear-doctor {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  
+  .main-crear-doctor h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 25px;
+  }
+  
+  .form-doctor {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-doctor label {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .form-doctor input,
+  .form-doctor select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+  
+  .form-doctor input:focus,
+  .form-doctor select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0,123,255,0.4);
+  }
+  
+  .btn-crear {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-crear:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-volver {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  

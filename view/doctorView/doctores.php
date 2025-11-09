@@ -62,77 +62,12 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
   </main>
   <?php else: ?>
 
-  <div id="formularios" class="container mt-3">
-
-    <!-- Formulario Agregar -->
-    <div class="formulario" id="form-agregar" style="display:none;">
-      <h3>➕ Nuevo Doctor</h3>
-      <form action="../../src/doctApi/createDoctor.php" method="POST">
-        <input type="text" name="nombre" placeholder="Nombre del doctor" required><br>
-        <input type="text" name="imagen" placeholder="URL de imagen" required><br>
-
-        <!-- Selección de especialidad -->
-        <select name="id_especialidad" required>
-          <option value="">Seleccione una especialidad</option>
-          <?php
-        $esp = $conn->query("SELECT * FROM especialidades ORDER BY nombre ASC");
-        while ($e = $esp->fetch_assoc()):
-      ?>
-          <option value="<?= $e['id'] ?>"><?= htmlspecialchars($e['nombre']) ?></option>
-          <?php endwhile; ?>
-        </select><br>
-
-        <button type="submit" class="btn btn-success mt-2">Guardar</button>
-      </form>
-    </div>
-
-    <!-- Formulario Borrar -->
-    <div class="formulario" id="form-borrar" style="display:none;">
-      <h3>🗑️ Borrar Doctor</h3>
-      <form action="../../src/doctApi/deleteDoctor.php" method="POST">
-        <input type="number" name="id" placeholder="ID del doctor" required><br>
-        <button type="submit" class="btn btn-danger mt-2">Borrar</button>
-      </form>
-      
-    </div>
-
-    <!-- Formulario Editar -->
-    <div class="formulario" id="form-editar" style="display:none;">
-      <h3>✏️ Editar Doctor</h3>
-      <form action="../../src/doctApi/updateDoctor.php" method="POST">
-        <input type="number" name="id" placeholder="ID del doctor" required><br>
-        <input type="text" name="nombre" placeholder="Nuevo nombre (opcional)"><br>
-        <input type="text" name="imagen" placeholder="Nueva URL de imagen (opcional)"><br>
-
-        <!-- Nuevo: cambiar especialidad -->
-        <select name="id_especialidad">
-          <option value="">(Sin cambios)</option>
-          <?php
-        $esp2 = $conn->query("SELECT * FROM especialidades ORDER BY nombre ASC");
-        while ($e2 = $esp2->fetch_assoc()):
-      ?>
-          <option value="<?= $e2['id'] ?>"><?= htmlspecialchars($e2['nombre']) ?></option>
-          <?php endwhile; ?>
-        </select><br>
-
-        <button type="submit" class="btn btn-primary mt-2">Actualizar</button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    function mostrarFormulario(tipo) {
-      ['form-agregar', 'form-borrar', 'form-editar'].forEach(id => {
-        document.getElementById(id).style.display = 'none';
-      });
-      document.getElementById(`form-${tipo}`).style.display = 'block';
-    }
-  </script>
+  <
 
   <main class="container mt-4">
     <?php if ($userRole == 1): ?>
     <div class="btn">
-      <button onclick="mostrarFormulario('agregar')" class="agregar">Nuevo Doctor</button>
+    <a href="crear_doctor.php" class="btn btn-success mt-3">➕ Nuevo Doctor</a>
     </div>
     <?php endif; ?>
     <h2 class="mb-3">👨‍⚕️ Lista de Doctores</h2>
