@@ -2,7 +2,7 @@
 session_start(); 
 require("../../src/db.php");
 
-$getSpecialtyQuery = "SELECT * FROM specialty";
+$getSpecialtyQuery = "SELECT * FROM especialidades";
 $specialtyList = $conn->query($getSpecialtyQuery);
 ?>
 
@@ -30,11 +30,11 @@ $specialtyList = $conn->query($getSpecialtyQuery);
                 <tbody>
                     <?php while ($row = $specialtyList->fetch_assoc()): ?>
                         <tr>
-                            <td><?= $row['name']?></td>
+                            <td><?= $row['nombre']?></td>
                             <td>
                                 <button class="btn-edit" 
                                     data-id="<?= $row['id'] ?>" 
-                                    data-name="<?= $row['name'] ?>">
+                                    data-name="<?= $row['nombre'] ?>">
                                     Editar
                                 </button>
                                 <a class="btn-delete" href="../../src/specialtyApi/delete.php?id=<?= $row['id'] ?>">Eliminar</a>
@@ -58,7 +58,7 @@ $specialtyList = $conn->query($getSpecialtyQuery);
                 <input type="hidden" name="id" id="inputId">
                 <div> 
                    <label>Nombre</label>
-                   <input type="text" name="name" id="inputName" required>
+                   <input type="text" name="nombre" id="inputName" required>
                 </div>
                 <div class="modal-actions">
                     <button type="submit" class="btn-primary">Guardar Cambios</button>

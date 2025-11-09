@@ -13,8 +13,8 @@ if ($conn->query($userExistsQuery) -> num_rows > 0) {
     exit();
 }
 
-$passwordHash = password_hash($password, PASSWORD_BCRYPT);
-$addQuery = "INSERT INTO user (name, last_name, email, password, id_role) VALUES ('$name', '$lastName', '$email', '$passwordHash', $idRole)";
+// $passwordHash = password_has($password, PASSWORD_BCRYPT);
+$addQuery = "INSERT INTO user (name, last_name, email, password, id_role) VALUES ('$name', '$lastName', '$email', '$password', $idRole)";
 
 if ($conn->query($addQuery)) {
     header("Location: ../../view/userView/login.html");

@@ -2,13 +2,13 @@
 require("../db.php");
 
 $id = $_POST['id'];
-$name = $_POST['name'];
+$name = $_POST['nombre'];
 $typeAction = "agregar";
-$typeQuery = "INSERT INTO specialty (name) VALUES ('$name')";
+$typeQuery = "INSERT INTO especialidades (nombre) VALUES ('$name')";
 
 if (!empty($id)){
     $typeAction = "editar";
-    $typeQuery = "UPDATE specialty SET name='$name' WHERE id=$id";
+    $typeQuery = "UPDATE especialidades SET nombre='$name' WHERE id=$id";
 }
 
 $result = $conn->query($typeQuery);
@@ -20,4 +20,3 @@ if ($result) {
 }
 $conn->close();
 ?>
-

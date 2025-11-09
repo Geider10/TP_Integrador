@@ -3,7 +3,7 @@ require("../db.php");
 session_start();
 
 $id = $_GET['id'];
-$deleteQuery = "DELETE FROM specialty WHERE id=$id";
+$deleteQuery = "DELETE FROM especialidades WHERE id=$id";
 $result = $conn->query($deleteQuery);
 
 if ($result) {
