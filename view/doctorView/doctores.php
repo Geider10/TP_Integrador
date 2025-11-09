@@ -32,7 +32,7 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
 <body>
 <header class="header">
     <div class="logo">
-      <h1>Mi Clínica</h1>        
+      <h1>Clínica Central</h1>        
     </div>
 
     <nav class="nav-links">

@@ -21,7 +21,7 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
 <body>
   <header class="header">
     <div class="logo">
-      <h1>Mi Clínica</h1>        
+      <h1>Clínica Central</h1>        
     </div>
 
     <nav class="nav-links">
@@ -114,16 +114,16 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
     <div class="footer-container">
       <div class="footer-info">
         <h3>Clínica Central</h3>
-        <p>Av. San Martín 1234, Buenos Aires</p>
-        <p>Tel: (011) 4567-8900</p>
+        <p>📍 Dirección: Av. Principal 123, Ciudad</p>
+        <p>📞 Teléfono: (011) 1234-5678</p></p>
         <p>Email: contacto@saludtotal.com</p>
       </div>
 
       <div class="footer-links">
         <h4>Enlaces útiles</h4>
         <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Solicitar Turno</a></li>
+          <li><a href="index.php">Inicio</a></li>
+          <li><a href="/turnView/Solicitar_turnos.php">Solicitar Turno</a></li>
           <li><a href="#">Contacto</a></li>
           <li><a href="#">Nosotros</a></li>
         </ul>
