@@ -62,7 +62,6 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
   </main>
   <?php else: ?>
 
-  <
 
   <main class="container mt-4">
     <?php if ($userRole == 1): ?>
