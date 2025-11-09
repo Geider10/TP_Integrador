@@ -7,10 +7,13 @@ $especialidades = $conn->query("SELECT * FROM especialidades ORDER BY nombre");
 <head>
   <meta charset="UTF-8">
   <title>Solicitar Turno Médico</title>
-  <link rel="stylesheet" href="../style/Solicitar_turnos.css">
+  <link rel="stylesheet" href="../style/turnStyle/Solicitar_turnos.css">
 </head>
 <body>
-  <h2>Solicitar Turno Médico</h2>
+  <main >
+    <a  href="../doctorView/doctores.php">Volver</a>
+    <h2>Solicitar Turno Médico</h2>
+  </main>
 
   <form method="POST" action="../../src/turnApi/crear_turnos.php">
     <label for="especialidad">Especialidad:</label>
@@ -38,6 +41,10 @@ $especialidades = $conn->query("SELECT * FROM especialidades ORDER BY nombre");
     <button type="submit">Guardar Turno</button>
   </form>
 
+  <article>
+    <h2>Antes de reservar el turno asegurate de completar todos los campos elegir una hora y fecha que tengas disponible</h2>
+    <p>Nuestros doctores todos son especialisados, eligue el doctor de tu confianza</p>
+  </article>
   <script>
   document.getElementById("especialidad").addEventListener("change", function() {
     const idEsp = this.value;

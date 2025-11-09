@@ -30,45 +30,38 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
 </head>
 
 <body>
-  <header class="header">
+<header class="header">
     <div class="logo">
-      <h1>Mi Clínica</h1>
+      <h1>Mi Clínica</h1>        
     </div>
 
     <nav class="nav-links">
       <a href="../index.php">Inicio</a>
       <a href="../turnView/Solicitar_turnos.php">Turnos</a>
-      <a href="#">Gestionar</a>
-      <a href="#">Acerca de Nosotros</a>
+      <?php if ($userRole == 1): ?>
+        <a href="../turnView/Listar_turnos.php">Gestionar</a>
+      <?php endif; ?>
+      <a href="../acerca.php">Acerca de Nosotros</a>
     </nav>
-
     <?php if (!$isLogedIn): ?>
-    <div class="login-btn">
-      <a href="../userView/login.html">Ingresar</a>
+      <div class="login-btn">
+      <a href="userView/login.html">Ingresar</a>
     </div>
     <?php else: ?>
-    <div>
+      <div class= "perfil">
       <a href="../userView/profile.php">Perfil <?= htmlspecialchars($userName) ?></a>
-    </div>
-    <div class="logout-btn">
-      <a href="../../src/userApi/logout.php">Cerrar sesión</a>
     </div>
     <?php endif; ?>
   </header>
-
+  
+    
+    
   <?php if (!$isLogedIn): ?>
   <main class="container mt-5">
     <h2>⚠️ Para ver los doctores debes estar logueado.</h2>
   </main>
   <?php else: ?>
 
-  <?php if ($userRole == 1): ?>
-  <div class="btn">
-    <button onclick="mostrarFormulario('agregar')" class="agregar">Nuevo-Doc</button>
-    <button onclick="mostrarFormulario('borrar')" class="borrar">Borrar-Doc</button>
-    <button onclick="mostrarFormulario('editar')" class="editar">Editar-Doc</button>
-  </div>
-  <?php endif; ?>
   <div id="formularios" class="container mt-3">
 
     <!-- Formulario Agregar -->
@@ -100,6 +93,7 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
         <input type="number" name="id" placeholder="ID del doctor" required><br>
         <button type="submit" class="btn btn-danger mt-2">Borrar</button>
       </form>
+      
     </div>
 
     <!-- Formulario Editar -->
@@ -136,6 +130,11 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
   </script>
 
   <main class="container mt-4">
+    <?php if ($userRole == 1): ?>
+    <div class="btn">
+      <button onclick="mostrarFormulario('agregar')" class="agregar">Nuevo Doctor</button>
+    </div>
+    <?php endif; ?>
     <h2 class="mb-3">👨‍⚕️ Lista de Doctores</h2>
     <div class="row">
       <?php foreach ($doctores as $doc): ?>
@@ -147,6 +146,15 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
             <p class="card-text"><strong>Especialidad:</strong> <?= htmlspecialchars($doc['especialidad']) ?></p>
             <a href="../turnView/Solicitar_turnos.php" class="btn btn-outline-primary">Solicitar turno</a>
           </div>
+          <?php if ($userRole == 1): ?>
+            <div class="admin-buttons mt-2">
+              <a href="update_Doctor.php?id=<?= $doc['id'] ?>" class="btn btn-sm btn-warning">✏️ Editar</a>
+              <form action="../../src/doctApi/deleteDoctor.php" method="POST" style="display:inline;">
+                <input type="hidden" name="id" value="<?= $doc['id'] ?>">
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este doctor?');">🗑️ Eliminar</button>
+              </form>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
       <?php endforeach; ?>

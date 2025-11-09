@@ -1,16 +1,21 @@
 <?php
-include 'db.php';
+require_once("../../src/db.php");
 
-// Obtener turnos
-$sql = "SELECT * FROM turnos";
-$result = $conn->query($sql);
+$query = "
+SELECT t.id, t.paciente, t.fecha, t.hora, 
+       d.nombre AS doctor, e.nombre AS especialidad
+FROM turnos t
+JOIN doctores d ON t.id_doctor = d.id
+JOIN especialidades e ON d.id_especialidad = e.id
+ORDER BY t.fecha, t.hora
+";
 
+$result = $conn->query($query);
 $turnos = [];
-if ($result && $result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $turnos[] = $row;
-    }
+
+while ($row = $result->fetch_assoc()) {
+    $turnos[] = $row;
 }
 
-// Cargar la vista
-include './view/listar_turnos_view.php';
+header("Content-Type: application/json");
+echo json_encode($turnos);

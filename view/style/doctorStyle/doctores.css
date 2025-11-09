@@ -1,127 +1,174 @@
+/* ==========================
+   ESTILOS GENERALES
+========================== */
 *{
-    margin: 0;
-    padding: 0;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: #f9fdfc;
+  color: #333;
+  line-height: 1.6;
 }
   /* Header */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;             
-    background-color: #f8f8f8;
-    padding: 10px 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .logo h1 {
-    font-size: 1.5rem;
-    color: #333;
-    margin: 0;
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 25px;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  
-  .nav-links a:hover {
-    color: #007bff;
-  }
-  .login-btn{
-    display: block;
-  }
-  .login-btn a {
-    display: block;
-    text-decoration: none;
-    background-color: #007bff;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s;
-  }
-  
-  .login-btn a:hover {
-    background-color: #0056b3;
-  }
+.header {
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, #ffffff, #e8f0ff);
+  height: 100px;
+  padding: 10px 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
+.logo h1 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0;
+}
 
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+.login-btn{
+  display: block;
+}
+.login-btn a {
+  display: block;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.login-btn a:hover {
+  background-color: #0056b3;
+}
+.perfil a{
+   display: block;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+.perfil a:hover {
+  background-color: #0056b3;
+}
+/* ==========================
+   MAIN
+========================== */
 main {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
-    padding: 20px;
-    margin-top: 100px;
-  }
-  
-  .doctor-card {
-    display: grid;
-    grid-template-columns: 200px 1fr 1fr; /* Imagen | Info | Horarios */
-    gap: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-    padding: 20px;
-    align-items: start;
-  }
-  
-  .doctor-image img {
-    width: 100%;
-    border-radius: 8px;
-    object-fit: cover;
-  }
-  
-  .doctor-info h2 {
-    color: #003366;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-  }
-  
-  .doctor-info a {
-    color: #0066cc;
-    text-decoration: none;
-  }
-  
-  .doctor-info a:hover {
-    text-decoration: underline;
-  }
-  
-  .doctor-logo img {
-    width: 120px;
-    margin-top: 10px;
-  }
-  
-  .doctor-schedule {
-    background-color: #e6f1fa;
-    padding: 15px;
-    border-radius: 6px;
-  }
-  
-  .doctor-schedule h3 {
-    margin-bottom: 10px;
-    color: #003366;
-  }
-  
-  .doctor-schedule p {
-    margin: 5px 0;
-    font-size: 0.95rem;
-  }
-  
-  .social a {
-    text-decoration: none;
-    font-size: 1.3rem;
-    margin-right: 10px;
-  }
-/* Botones para agregar, borrar y editar */
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  padding: 20px;
+  margin-top: 100px;
+}
+.mb-3{
+  margin-left: 200px;
+  padding: 10px;
+}
+/* ==========================
+   TARJETAS DE DOCTORES (ANCHO COMPLETO)
+========================== */
+.container .row {
+  display: flex;
+  flex-direction: row; /* 🔹 una debajo de otra */
+  gap: 25px;
+  width: 100%;
+  padding: 0 30px;
+}
+
+.card {
+  background-color: #fff;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%; /* 🔹 ocupa todo el ancho disponible */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 320px; /* 🔹 altura fija uniforme */
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-body {
+  padding: 20px 25px;
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.btn-outline-primary {
+  border-radius: 8px;
+  font-size: 0.9rem;
+  padding: 8px 14px;
+}
+
+.admin-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 15px 25px;
+  background-color: #fafafa;
+  border-top: 1px solid #e0e0e0;
+}
+
+.admin-buttons .btn {
+  font-size: 0.85rem;
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+
+/* ==========================
+   BOTONES CRUD
+========================== */
 .btn button {
   margin-right: 10px;
   padding: 10px;
@@ -130,9 +177,19 @@ main {
   border-radius: 6px;
   cursor: pointer;
 }
+
 .agregar { background-color: green; }
 .borrar { background-color: red; }
 .editar { background-color: blue; }
+
+.agregar:hover, .borrar:hover, .editar:hover {
+  background-color: white;
+  color: black;
+}
+
+/* ==========================
+   FORMULARIO
+========================== */
 .formulario {
   border: 1px solid #ccc;
   padding: 15px;
@@ -141,20 +198,10 @@ main {
   margin-top: 20px;
   background-color: #f9f9f9;
 }
-.agregar:hover, .borrar:hover,.editar:hover{
-  background-color: white;
-  color: black;
-}
 
-.formulario {
-  border: 1px solid #ccc;
-  padding: 15px;
-  width: 300px;
-  border-radius: 8px;
-  margin-top: 20px;
-}
-
-/* Footer */
+/* ==========================
+   FOOTER
+========================== */
 .footer {
   background-color: #046380;
   color: #fff;

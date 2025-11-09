@@ -2,43 +2,48 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Lista de turnos</title>
-  <link rel="stylesheet" href="./style/listar_turnos.css">
+  <title>Lista de Turnos</title>
+  <link rel="stylesheet" href="../style/turnStyle/turnos_lista.css">
 </head>
 <body>
-  <h1>Lista de Turnos</h1>
+  <a href="../index.php">  Home</a>
+  <h2>Turnos Registrados</h2>
 
-  <a href="Solicitar_turnos.php" class="nuevo">+ Nuevo Turno</a>
-
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Paciente</th>
-      <th>Doctor</th>
-      <th>Especialidad</th>
-      <th>Fecha</th>
-      <th>Hora</th>
-      <th>Acciones</th>
-    </tr>
-
-    <?php if (!empty($turnos)): ?>
-      <?php foreach ($turnos as $row): ?>
-        <tr>
-          <td><?= $row['id'] ?></td>
-          <td><?= htmlspecialchars($row['paciente']) ?></td>
-          <td><?= htmlspecialchars($row['doctor']) ?></td>
-          <td><?= htmlspecialchars($row['especialidad']) ?></td>
-          <td><?= $row['fecha'] ?></td>
-          <td><?= $row['hora'] ?></td>
-          <td>
-            <a href="editar_turnos.php?id=<?= $row['id'] ?>">Editar</a>
-            <a href="eliminar_turnos.php?id=<?= $row['id'] ?>" onclick="return confirm('¿Seguro que deseas eliminar este turno?')">Eliminar</a>
-          </td>
-        </tr>
-      <?php endforeach; ?>
-    <?php else: ?>
-      <tr><td colspan="7">No hay turnos registrados</td></tr>
-    <?php endif; ?>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Paciente</th>
+        <th>Doctor</th>
+        <th>Especialidad</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tablaTurnos"></tbody>
   </table>
+
+  <script>
+    fetch("../../src/turnApi/listar_turnos.php")
+      .then(r => r.json())
+      .then(data => {
+        const tabla = document.getElementById("tablaTurnos");
+        tabla.innerHTML = data.map(t => `
+          <tr>
+            <td>${t.id}</td>
+            <td>${t.paciente}</td>
+            <td>${t.doctor}</td>
+            <td>${t.especialidad}</td>
+            <td>${t.fecha}</td>
+            <td>${t.hora}</td>
+            <td>
+              <a href="Editar_turnos.php?id=${t.id}">Editar</a> |
+              <a href="../../src/turnApi/eliminar_turnos.php?id=${t.id}" onclick="return confirm('¿Seguro que deseas eliminar este turno?')">Eliminar</a>
+            </td>
+          </tr>
+        `).join("");
+      });
+  </script>
 </body>
 </html>

@@ -1,10 +1,18 @@
 <?php
-include("../db.php");
+require_once("../../src/db.php");
 
-if (!isset($_GET["id"])) die("ID no especificado.");
-$id = intval($_GET["id"]);
+if (!isset($_GET['id'])) {
+    die("Falta el ID del turno");
+}
 
-$conn->query("DELETE FROM turnos WHERE id=$id");
-header("Location: listar_turnos.php");
-exit;
-?>
+$id = intval($_GET['id']);
+
+$stmt = $conn->prepare("DELETE FROM turnos WHERE id = ?");
+$stmt->bind_param("i", $id);
+
+if ($stmt->execute()) {
+    header("Location: ../../view/turnView/Listar_turnos.php");
+    exit;
+} else {
+    echo "Error al eliminar turno.";
+}
