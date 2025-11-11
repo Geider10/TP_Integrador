@@ -7,20 +7,16 @@
 body {
   background-color: #747575;
   color: #333;
-  line-height: 1.6;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to bottom, #ffffff, #e8f0ff);
-  height: 100px;
-  padding: 10px 30px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  background-color: #80CEFF;
+  padding: 20px 30px;
+  width: 100%;
+  height: 80px;
 }
 .logo h1 {
   font-size: 1.5rem;
@@ -35,7 +31,6 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  text-transform: uppercase;
   color: #333;
   font-weight: 500;
   transition: color 0.3s;
@@ -112,52 +107,149 @@ section h2 {
   color: #00796b;
   margin-bottom: 1.5rem;
 }
-/* Servicios */
-.servicios ul {
-  list-style: none;
-  max-width: 600px;
-  margin: 0 auto;
-}
-.servicios li {
-  background: #e0f7fa;
-  margin: 0.5rem 0;
-  padding: 0.8rem;
-  border-radius: 5px;
-  font-weight: 500;
-}
-/* Médicos */
-.medicos .cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-.medicos .card {
-  background: #ffffff;
-  border: 1px solid #cfd8dc;
-  padding: 1.5rem;
-  border-radius: 10px;
-  width: 220px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-}
-.medicos .card:hover {
-  transform: scale(1.05);
+/* ======== SECCIÓN SERVICIOS ======== */
+.servicios {
+  background: linear-gradient(to bottom right, #f4f8fb, #e8f0ff);
+  padding: 80px 40px;
+  text-align: center;
 }
 
-/* Contacto */
-.contacto p {
-  margin: 0.5rem 0;
+.servicios h2 {
+  color: #003366;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  position: relative;
 }
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.servicio-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.servicio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 123, 255, 0.15);
+}
+.servicio-card .card-icon {
+  margin-top: 20px;
+}
+.servicio-card i {
+  font-size: 3rem;       /* Tamaño grande */
+  color: #007bff;          /* Color principal */
+  margin-bottom: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.servicio-card:hover i {
+  color: #0056b3;          /* Azul más oscuro en hover */
+  transform: scale(1.1);
+}
+.servicio-card h3 {
+  color: #007bff;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.servicio-card p {
+  color: #333;
+  font-size: 1rem;
+  padding: 0 15px;
+  line-height: 1.6;
+}
+
+
+/*SECCIÓN SEDES  */
+.sedes {
+  background-color: #f4f8fb;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.sedes h2 {
+  color: #003366;
+  font-size: 2.3rem;
+  margin-bottom: 50px;
+}
+
+.grid-sedes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card-ubicacion {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-ubicacion:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 123, 255, 0.15);
+}
+
+.card-ubicacion img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.card-ubicacion h3 {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.card-ubicacion p {
+  color: #333;
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.btn-mapa {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.btn-mapa:hover {
+  background-color: #0056b3;
+}
+
 
 /* Footer */
 .footer {
-  background-color: #046380;
-  color: #fff;
+  background-color: #80CEFF;
+  color: #333;
   padding: 40px 20px 10px;
   font-family: Arial, sans-serif;
 }
-
+.footer-info{
+  color: #4e4e4e;
+}
 .footer-container {
   display: flex;
   flex-wrap: wrap;
@@ -169,6 +261,7 @@ section h2 {
 
 .footer-info h3 {
   margin-bottom: 10px;
+  color: #333;
 }
 
 .footer-links ul {
@@ -181,12 +274,12 @@ section h2 {
 }
 
 .footer-links a {
-  color: #cce7f0;
+  color: #4e4e4e;
   text-decoration: none;
 }
 
 .footer-links a:hover {
-  color: #fff;
+  color: #333;
   text-decoration: underline;
 }
 
@@ -202,40 +295,66 @@ section h2 {
 
 .footer-bottom {
   text-align: center;
-  border-top: 1px solid #0a6c8b;
+  border-top: 1px solid #6b7280;
   margin-top: 20px;
   padding-top: 10px;
   font-size: 14px;
-  color: #d0e7ee;
+  color: #333;
 }
-/* Carrusel ocupa todo el ancho */
-#multiCarousel {
-  width: 100%;
-  overflow: hidden;
-  background-color: #f8f9fa; /* Color suave de fondo */
-}
-
-/* Imágenes pequeñas */
-.carousel-img {
-  width: 120px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.3s;
+/* Estadisticas */
+.stats-section {
+  background-color: #80CEFF;
+  color: #333;
+  text-align: center;
+  padding: 4rem 2rem;
 }
 
-/* Efecto hover */
-.carousel-img:hover {
-  transform: scale(1.1);
+.stats-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #333;
+
 }
 
-.carousel-item {
-  flex: 0 0 auto;
-  animation: slide 20s linear infinite;
+.stats-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
 }
-  
-@keyframes slide {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
+
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
 }
+
+.stat-card {
+  text-align: center;
+  max-width: 250px;
+}
+
+.stat-card .icon {
+  background: rgba(255, 255, 255, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.stat-card p {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color : #4e4e4e;
+}
+
   

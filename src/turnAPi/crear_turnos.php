@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bind_param("iisss", $id_especialidad, $id_doctor, $paciente, $fecha, $hora);
 
         if ($stmt->execute()) {
-            echo "<script>alert('Turno guardado correctamente'); window.location.href='../../pages/turnos/listar_turnos.php';</script>";
+            echo "<script>alert('Turno guardado correctamente'); window.location.href='../../view/turnView/listar_turnos.php';</script>";
         } else {
             echo "<script>alert('Error al guardar el turno'); window.history.back();</script>";
         }
