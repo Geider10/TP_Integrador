@@ -136,7 +136,23 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #174e91;
 }
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  resize: vertical; /* permite cambiar el tamaño solo verticalmente */
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
 
+textarea:focus {
+  border-color: #007bff; /* color del borde al enfocar */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
 /* --- Responsive --- */
 @media (max-width: 480px) {
   header {

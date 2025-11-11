@@ -2,7 +2,7 @@
 require_once("../../src/db.php");
 
 $query = "
-SELECT t.id, t.paciente, t.fecha, t.hora, 
+SELECT t.id, t.nota, t.fecha, t.hora, 
        d.nombre AS doctor, e.nombre AS especialidad
 FROM turnos t
 JOIN doctores d ON t.id_doctor = d.id
