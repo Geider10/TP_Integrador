@@ -38,6 +38,7 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
     <nav class="nav-links">
       <a href="../index.php">Inicio</a>
       <a href="../turnView/Solicitar_turnos.php">Turnos</a>
+      <a href="#">Doctores</a>
       <?php if ($userRole == 1): ?>
         <a href="../turnView/Listar_turnos.php">Gestionar</a>
       <?php endif; ?>
@@ -45,7 +46,7 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
     </nav>
     <?php if (!$isLogedIn): ?>
       <div class="login-btn">
-      <a href="userView/login.html">Ingresar</a>
+      <a href="../userView/login.html">Ingresar</a>
     </div>
     <?php else: ?>
       <div class= "perfil">
@@ -99,19 +100,19 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
   <footer class="footer mt-5">
     <div class="footer-container">
       <div class="footer-info">
-        <h3>Clínica Central</h3>
-        <p>Av. San Martín 1234, Buenos Aires</p>
-        <p>Tel: (011) 4567-8900</p>
-        <p>Email: contacto@saludtotal.com</p>
+         <h3>Clínica Central</h3>
+        <p>📍 Dirección: Pichincha 1890, CABA</p>
+        <p>📞 Teléfono: 11 2233-4455</p></p>
+        <p>Email: contacto@clinicacentral.com</p>
       </div>
 
       <div class="footer-links">
         <h4>Enlaces útiles</h4>
         <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Solicitar Turno</a></li>
-          <li><a href="#">Contacto</a></li>
-          <li><a href="#">Nosotros</a></li>
+          <li><a href="../index.php">Inicio</a></li>
+          <li><a href="../turnView/Solicitar_turnos.php">Turnos</a></li>
+          <li><a href="../doctorView/doctores.php">Doctores</a></li>
+          <li><a href="../acerca.php">Acerca de Nostros</a></li>
         </ul>
       </div>
 

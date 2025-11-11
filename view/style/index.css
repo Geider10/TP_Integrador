@@ -9,7 +9,7 @@ body {
   color: #333;
   line-height: 1.6;
 }
-  /* Header */
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -210,12 +210,9 @@ section h2 {
 }
 /* Carrusel ocupa todo el ancho */
 #multiCarousel {
-  margin-top: 20px;
-  margin-bottom: 20px;
   width: 100%;
   overflow: hidden;
   background-color: #f8f9fa; /* Color suave de fondo */
-  padding: 10px 0;
 }
 
 /* Imágenes pequeñas */
@@ -223,7 +220,6 @@ section h2 {
   width: 120px;
   height: 80px;
   object-fit: cover;
-  margin: 0 5px;
   border-radius: 8px;
   transition: transform 0.3s;
 }
