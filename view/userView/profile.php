@@ -1,4 +1,5 @@
 <?php      
+require_once("../../src/db.php");
 session_start(); 
 if (!isset($_SESSION["user_id"])) {
   header("Location: ../index.html");
@@ -9,6 +10,14 @@ $id = $_SESSION["user_id"];
 $name = $_SESSION["user_name"];
 $lastName = $_SESSION["user_lastName"];
 $email = $_SESSION["user_email"];
+$userRole = $_SESSION["user_role"];
+
+$turnosUser = $conn->query("SELECT t.id ,e.nombre AS especialidad, d.nombre AS doctor, t.fecha, t.hora 
+                                  FROM turnos t
+                                  JOIN especialidades e ON t.id_especialidad = e.id
+                                  JOIN doctores d ON t.id_doctor = d.id
+                                  WHERE t.id_user = $id
+                                  ORDER BY t.fecha, t.hora");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -18,6 +27,14 @@ $email = $_SESSION["user_email"];
   <link rel="stylesheet" href="../style/userStyle/profile.css"/> 
 </head>
 <body>
+  <header class="header">
+  <div>
+      <a href="../index.php">
+          <h2><- Clínica Central</h2> 
+      </a>    
+  </div>
+  </header>
+
   <h2>Perfil</h2>
   <div class="profile-container"> 
     <img src="../img/usuario.jpg" alt="User Avatar" width="150" height="150">
@@ -31,43 +48,38 @@ $email = $_SESSION["user_email"];
     </div>
   </div>
 
-  <h2>Turnos Registrados</h2>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nota</th>
-        <th>Doctor</th>
-        <th>Especialidad</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody id="tablaTurnos"></tbody>
-  </table>
-
-  <script>
-    fetch("../../src/turnApi/listar_turnos.php")
-      .then(r => r.json())
-      .then(data => {
-        const tabla = document.getElementById("tablaTurnos");
-        tabla.innerHTML = data.map(t => `
+  <?php if ($userRole == 2): ?>
+    <h2>Turnos Registrados</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Especialidad</th>
+          <th>Doctor</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tablaTurnos">
+        <?php while ($turno = $turnosUser->fetch_assoc()): ?>
           <tr>
-            <td>${t.id}</td>
-            <td>${t.nota}</td>
-            <td>${t.doctor}</td>
-            <td>${t.especialidad}</td>
-            <td>${t.fecha}</td>
-            <td>${t.hora}</td>
+            <td><?= htmlspecialchars($turno['especialidad']) ?></td>
+            <td><?= htmlspecialchars($turno['doctor']) ?></td>
+            <td><?= htmlspecialchars($turno['fecha']) ?></td>
+            <td><?= htmlspecialchars($turno['hora']) ?></td>
             <td>
-              <a href="Editar_turnos.php?id=${t.id}">Editar</a> |
-              <a href="../../src/turnApi/eliminar_turnos.php?id=${t.id}" onclick="return confirm('¿Seguro que deseas eliminar este turno?')">Eliminar</a>
+                <button class="btn-edit" 
+                  data-id="<?= $row['id'] ?>" 
+                  data-name="<?= $row['nombre'] ?>">
+                  Editar
+                </button>
+              <a class="btn-delete" href="../../src/turnApi/eliminar_turnos.php?id=<?= $turno['id'] ?>">Cancelar</a>
             </td>
           </tr>
-        `).join("");
-      });
-  </script>
+        <?php endwhile; ?>
+      </tbody>
+    </table>
+  <?php endif; ?>
 
 </body>
 </html>
