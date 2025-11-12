@@ -1,75 +1,139 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f7fa;
-  margin: 0;
-  padding: 0;
-}
-.profile-container {
-  max-width: 500px;
-  background: #fff;
-  padding: 20px;
-  margin: 200px auto;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-  text-align: center;
+  color: #333;
 }
 
-.profile-container img {
+.header {
+  background-color: #80CEFF;
+  padding: 20px 30px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.back-link:hover {
+  color: #e3f2fd;
+}
+
+.main-content {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.profile-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profile-avatar {
   border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
   margin-bottom: 15px;
 }
 
 .profile-container h2 {
+  color: #0077b6;
   margin-bottom: 10px;
 }
 
 .profile-container p {
   color: #555;
-  margin: 5px 0;
+  margin: 6px 0;
+  font-size: 16px;
 }
-.profile-container a {
-  margin: 8px;
-  padding: 8px 14px;
+
+.profile-actions {
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  margin: 6px;
+  padding: 10px 16px;
   border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 4px;
+  border-radius: 6px;
   text-decoration: none;
-  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-.profile-container a:hover {
-  background-color: #0056b3;
+.btn-logout {
+  background-color: #007bff;
 }
 
-.modal-content {
+.btn-edit {
+  background-color: #4caf50;
+}
+
+.btn-delete {
+  background-color: #f44336;
+}
+
+.btn:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+.turnos-section {
   background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  width: 320px;
-  border: 2px solid red;
-  z-index: 1000;
-}
-.modal-content h3 {
-  margin-top: 0;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.modal-content label {
-  display: block;
-  text-align: left;
-  margin-top: 10px;
+.turnos-section h2 {
+  margin-bottom: 15px;
+  color: #0077b6;
+  text-align: center;
 }
 
-.modal-content input {
+.turnos-table {
   width: 100%;
-  padding: 6px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border-collapse: collapse;
+  font-size: 15px;
 }
 
-.modal-actions {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-between;
+.turnos-table th {
+  background: #80CEFF;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.turnos-table td {
+  padding: 10px;
+  border-bottom: 1px solid #e0f7fa;
+}
+
+.turnos-table tr:hover {
+  background-color: #f1faff;
+}
+
+.turnos-table td .btn {
+  margin: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
 }

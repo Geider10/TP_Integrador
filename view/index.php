@@ -1,10 +1,10 @@
 <?php
 session_start();
 $isLogedIn = true;
-$userRole = $isLogedIn ? $_SESSION['user_role'] : null;
 if (!isset($_SESSION["user_id"])) {
     $isLogedIn = false;
 }
+$userRole = $isLogedIn ? $_SESSION['user_role'] : null;
 $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
 ?>
 
@@ -15,8 +15,11 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
     <link rel="stylesheet" href="style/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-  <title>Hospital Central</title>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+/>
+  <title>Clínica Central</title>
 </head>
 <body>
   <header class="header">
@@ -25,12 +28,9 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
     </div>
 
     <nav class="nav-links">
-      <a href="index.php">Inicio</a>
+      <a href="#">Inicio</a>
       <a href="turnView/Solicitar_turnos.php">Turnos</a>
       <a href="doctorView/doctores.php">Doctores</a>
-      <?php if ($userRole == 1): ?>
-        <a href="turnView/Listar_turnos.php">Gestionar</a>
-      <?php endif; ?>
       <a href="acerca.php">Acerca de Nosotros</a>
     </nav>
     <?php if (!$isLogedIn): ?>
@@ -47,62 +47,83 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
   <main>
     <section class="hero">
       <h1>Hospital Central</h1>
-      <p>Atención médica de calidad para vos y tu familia. Podés solicitar turnos online de forma rápida y sencilla.</p>
-      <a href="./turnView/Solicitar_turnos.php" class="btn">Solicitar turno</a>
+      <p> En Clínica Central, gestionamos cada consulta y turno con tecnología moderna, atención humana y eficiencia.</p>
     </section>
 
-    <<section class="servicios">
-  <h2>💙 Nuestros Servicios</h2>
+  <section class="servicios">
+  <h2>Nuestros Servicios</h2>
 
   <div class="servicios-grid">
     <div class="servicio-card">
-      <img src="img/consultas.jpg" alt="Consultas médicas">
+      <div class="card-icon">
+        <i class="fa-solid fa-house-chimney-medical"></i>
+      </div>
       <h3>Consultas Médicas</h3>
       <p>Atención personalizada con los mejores especialistas en cada área.</p>
     </div>
 
     <div class="servicio-card">
-      <img src="img/laboratorio1.jpg" alt="Estudios de laboratorio">
+      <div class="card-icon">
+        <i class="fa-solid fa-desktop"></i>
+      </div>
       <h3>Estudios de Laboratorio</h3>
       <p>Equipos de última tecnología para análisis clínicos rápidos y precisos.</p>
     </div>
 
     <div class="servicio-card">
-      <img src="img/24horas.jpg" alt="Emergencias 24hs">
+      <div class="card-icon">
+         <i class="fa-solid fa-truck-medical"></i>
+      </div>
       <h3>Emergencias 24hs</h3>
       <p>Contamos con un servicio de urgencias disponible las 24 horas, todos los días.</p>
     </div>
 
     <div class="servicio-card">
-      <img src="img/especialidades.jpg" alt="Especialidades médicas">
+      <div class="card-icon">
+        <i class="fa-solid fa-stethoscope"></i>
+      </div>
       <h3>Especialidades Médicas</h3>
       <p>Más de 15 especialidades con profesionales certificados y atención integral.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="card-icon">
+       <i class="fa-solid fa-receipt"></i>
+      </div>
+      <h3>Receta Digital</h3>
+      <p>Recibe una receta de tu doctor por Whatsapp o email.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="card-icon">
+      <i class="fa-solid fa-mobile-screen-button"></i>
+      </div>
+      <h3>Turnos Online</h3>
+      <p>Solicita un turno por la web de forma rápida y segura.</p>
+  </div>
+</section>
+
+<section class="stats-section">
+  <h2 class="stats-title">SOMOS LÍDERES EN GESTIÓN CLÍNICA</h2>
+  
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3>+2.000</h3>
+      <p>Profesionales confían en nosotros</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>+14.000</h3>
+      <p>Turnos médicos procesados por año</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>+10.000</h3>
+      <p>Historias clínicas registradas</p>
     </div>
   </div>
 </section>
 
-    <!-- Médicos destacados -->
-    <section class="medicos">
-      <h2>Médicos destacados</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Dra. Ana Pérez</h3>
-          <p>Cardióloga</p>
-        </article>
-        <article class="card">
-          <h3>Dr. Juan López</h3>
-          <p>Pediatra</p>
-        </article>
-        <article class="card">
-          <h3>Dra. María Gómez</h3>
-          <p>Dermatóloga</p>
-        </article>
-      </div>
-    </section>
-    <!--Carrusel-->
-    
-       <section class="sedes">
-  <h2>🚑 Consulta nuestras sedes</h2>
+  <section class="sedes">
+  <h2>Consulta nuestras sedes</h2>
 
   <div class="grid-sedes">
     <div class="card-ubicacion">
@@ -135,19 +156,19 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-info">
-        <h3>Clínica Central</h3>
-        <p>📍 Dirección: Av. Principal 123, Ciudad</p>
-        <p>📞 Teléfono: (011) 1234-5678</p></p>
-        <p>Email: contacto@saludtotal.com</p>
+         <h3>Clínica Central</h3>
+        <p>📍 Dirección: Pichincha 1890, CABA</p>
+        <p>📞 Teléfono: 11 2233-4455</p></p>
+        <p>Email: contacto@clinicacentral.com</p>
       </div>
 
       <div class="footer-links">
         <h4>Enlaces útiles</h4>
         <ul>
           <li><a href="index.php">Inicio</a></li>
-          <li><a href="/turnView/Solicitar_turnos.php">Solicitar Turno</a></li>
-          <li><a href="#">Contacto</a></li>
-          <li><a href="#">Nosotros</a></li>
+          <li><a href="./turnView/Solicitar_turnos.php">Turnos</a></li>
+          <li><a href="./doctorView/doctores.php">Doctores</a></li>
+          <li><a href="./acerca.php">Acerca de Nosotros</a></li>
         </ul>
       </div>
 
@@ -163,9 +184,6 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
       <p>© 2025 Hospital Central — Todos los derechos reservados</p>
     </div>
   </footer>
-
-  
-    </body>
-    </html>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,6 +1,3 @@
-/* ==========================
-   ESTILOS GENERALES
-========================== */
 *{
   margin: 0;
   padding: 0;
@@ -10,21 +7,15 @@
 body {
   background-color: #f9fdfc;
   color: #333;
-  line-height: 1.6;
 }
-  /* Header */
 .header {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to bottom, #ffffff, #e8f0ff);
-  height: 100px;
-  padding: 10px 30px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  background-color: #80CEFF;
+  padding:20px 30px;
+  width: 100%;
+  height: 80px;
 }
 
 .logo h1 {
@@ -40,7 +31,6 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  text-transform: uppercase;
   color: #333;
   font-weight: 500;
   transition: color 0.3s;
@@ -89,6 +79,7 @@ main {
   background-color: #f4f6f8;
   padding: 20px;
   margin-top: 100px;
+  flex: 1;
 }
 .mb-3{
   margin-left: 200px;
@@ -199,12 +190,10 @@ main {
   background-color: #f9f9f9;
 }
 
-/* ==========================
-   FOOTER
-========================== */
+/* Footer*/
 .footer {
-  background-color: #046380;
-  color: #fff;
+  background-color: #80CEFF;
+  color: #333;
   padding: 40px 20px 10px;
   font-family: Arial, sans-serif;
 }
@@ -232,12 +221,12 @@ main {
 }
 
 .footer-links a {
-  color: #cce7f0;
+  color: #4e4e4e;;
   text-decoration: none;
 }
 
 .footer-links a:hover {
-  color: #fff;
+  color: #333;
   text-decoration: underline;
 }
 
@@ -253,9 +242,9 @@ main {
 
 .footer-bottom {
   text-align: center;
-  border-top: 1px solid #0a6c8b;
+  border-top: 1px solid #6b7280;
   margin-top: 20px;
   padding-top: 10px;
   font-size: 14px;
-  color: #d0e7ee;
+  color: #333;
 }

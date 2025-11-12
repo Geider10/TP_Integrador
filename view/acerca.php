@@ -1,10 +1,10 @@
 <?php
 session_start();
 $isLogedIn = true;
-$userRole = $isLogedIn ? $_SESSION['user_role'] : null;
 if (!isset($_SESSION["user_id"])) {
     $isLogedIn = false;
 }
+$userRole = $isLogedIn ? $_SESSION['user_role'] : null;
 $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
 ?>
 
@@ -29,9 +29,6 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
             <a href="index.php">Inicio</a>
             <a href="turnView/Solicitar_turnos.php">Turnos</a>
             <a href="doctorView/doctores.php">Doctores</a>
-            <?php if ($userRole == 1): ?>
-            <a href="turnView/Listar_turnos.php">Gestionar</a>
-            <?php endif; ?>
             <a href="#">Acerca de Nosotros</a>
         </nav>
         <?php if (!$isLogedIn): ?>
@@ -51,18 +48,17 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
     <div class="about-text">
       <h2>👩‍⚕️ Acerca de Nosotros</h2>
       <p>
-        En <strong>Mi Clínica</strong> nos dedicamos a ofrecer atención médica de calidad, priorizando el bienestar de nuestros pacientes.
+        En <strong>Clinca Central</strong> nos dedicamos a ofrecer atención médica de calidad, priorizando el bienestar de nuestros pacientes.
         Contamos con un equipo de profesionales comprometidos con la salud, la prevención y el cuidado integral.
       </p>
       <p>
         Desde nuestros comienzos, buscamos crear un espacio donde cada persona se sienta escuchada y acompañada.
         Nuestro objetivo es brindar un servicio humano, eficiente y accesible para toda la comunidad.
       </p>
-      <a href="../doctores/doctores.php" class="btn-about">Ver nuestros doctores</a>
     </div>
 
     <div class="about-image">
-      <img src="../img/clinica_team.jpg" alt="Equipo médico">
+      <img src="./img/edificio1.jpg" alt="Equipo médico">
     </div>
   </div>
 
@@ -90,19 +86,19 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
 <footer class="footer">
     <div class="footer-container">
       <div class="footer-info">
-        <h3>Clínica Central</h3>
-        <p>Av. San Martín 1234, Buenos Aires</p>
-        <p>Tel: (011) 4567-8900</p>
-        <p>Email: contacto@saludtotal.com</p>
+         <h3>Clínica Central</h3>
+        <p>📍 Dirección: Pichincha 1890, CABA</p>
+        <p>📞 Teléfono: 11 2233-4455</p></p>
+        <p>Email: contacto@clinicacentral.com</p>
       </div>
 
       <div class="footer-links">
         <h4>Enlaces útiles</h4>
         <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Solicitar Turno</a></li>
-          <li><a href="#">Contacto</a></li>
-          <li><a href="#">Nosotros</a></li>
+          <li><a href="index.php">Inicio</a></li>
+          <li><a href="./turnView/Solicitar_turnos.php">Turnos</a></li>
+          <li><a href="./doctorView/doctores.php">Doctores</a></li>
+          <li><a href="./acerca.php">Acerca de Nosotros</a></li>
         </ul>
       </div>
 

@@ -1,72 +1,114 @@
 <?php
 require_once("../../src/db.php");
+session_start();
+
+$isLogedIn = isset($_SESSION["user_id"]);
+$userRole = $isLogedIn ? $_SESSION['user_role'] : null;
+$nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
+
 $especialidades = $conn->query("SELECT * FROM especialidades ORDER BY nombre");
+$doctores = $conn->query("SELECT * FROM doctores ORDER BY nombre");
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Solicitar Turno Médico</title>
+  <title>Solicitar Turno</title>
   <link rel="stylesheet" href="../style/turnStyle/Solicitar_turnos.css">
 </head>
 <body>
-  <main >
-    <a  href="../doctorView/doctores.php">Volver</a>
-    <h2>Solicitar Turno Médico</h2>
+  <header>
+    <div class="logo">
+      <h1>Clínica Central</h1>        
+    </div>
+    <nav class="nav-links">
+      <a href="../index.php">Inicio</a>
+      <a href="../turnView/Solicitar_turnos.php">Turnos</a>
+      <a href="../doctorView/doctores.php">Doctores</a>
+      <a href="../acerca.php">Acerca de Nosotros</a>
+    </nav>
+    <?php if (!$isLogedIn): ?>
+      <div class="login-btn">
+        <a href="../userView/login.html">Ingresar</a>
+      </div>
+    <?php else: ?>
+      <div class="perfil"> 
+        <a href="../userView/profile.php">Perfil <?= htmlspecialchars($nameUser) ?></a>
+      </div>
+    <?php endif; ?>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <h1>Solicitar turno</h1>
+
+      <form method="POST" action="../../src/turnApi/crear_turnos.php">
+        <label for="especialidad">Especialidad*</label>
+        <select id="especialidad" name="id_especialidad" required>
+          <option value="">Seleccione una especialidad</option>
+          <?php while ($e = $especialidades->fetch_assoc()): ?>
+            <option value="<?= $e['id'] ?>"><?= htmlspecialchars($e['nombre']) ?></option>
+          <?php endwhile; ?>
+        </select>
+
+        <label for="doctor">Doctor*</label>
+        <select id="doctor" name="id_doctor" required>
+          <option value="">Seleccione una especialidad primero</option>
+        </select>
+
+        <label for="fecha">Fecha*</label>
+        <input type="date" name="fecha" id="fecha" required>
+
+        <label for="hora">Hora*</label>
+        <input type="time" name="hora" id="hora" required>
+
+        <label for="nota">Nota</label>
+        <textarea name="nota" id="nota"></textarea>
+
+        <button type="submit">Guardar Turno</button>
+      </form>
+    </div>
   </main>
 
-  <form method="POST" action="../../src/turnApi/crear_turnos.php">
-    <label for="especialidad">Especialidad:</label>
-    <select id="especialidad" name="id_especialidad" required>
-      <option value="">Seleccione una especialidad</option>
-      <?php while ($e = $especialidades->fetch_assoc()) : ?>
-        <option value="<?= $e['id'] ?>"><?= htmlspecialchars($e['nombre']) ?></option>
-      <?php endwhile; ?>
-    </select>
-
-    <label for="doctor">Doctor:</label>
-    <select id="doctor" name="id_doctor" required>
-      <option value="">Seleccione una especialidad primero</option>
-    </select>
-
-    <label for="paciente">Paciente:</label>
-    <input type="text" name="paciente" id="paciente" required>
-
-    <label for="fecha">Fecha:</label>
-    <input type="date" name="fecha" id="fecha" required>
-
-    <label for="hora">Hora:</label>
-    <input type="time" name="hora" id="hora" required>
-
-    <button type="submit">Guardar Turno</button>
-  </form>
-
-  <article>
-    <h2>Antes de reservar el turno asegurate de completar todos los campos elegir una hora y fecha que tengas disponible</h2>
-    <p>Nuestros doctores todos son especialisados, eligue el doctor de tu confianza</p>
-  </article>
   <script>
-  document.getElementById("especialidad").addEventListener("change", function() {
-    const idEsp = this.value;
-    const selectDoc = document.getElementById("doctor");
+    const doctores = <?php
+      $doctorList = [];
+      while ($d = $doctores->fetch_assoc()) {
+          $doctorList[] = [
+              'id' => $d['id'],
+              'nombre' => $d['nombre'],
+              'id_especialidad' => $d['id_especialidad']
+          ];
+      }
+      echo json_encode($doctorList);
+    ?>;
 
-    if (idEsp) {
-      fetch(`../../src/turnApi/get_doctores_por_especialidad.php?id_especialidad=${idEsp}`)
-        .then(res => res.json())
-        .then(doctores => {
-          selectDoc.innerHTML = "<option value=''>Seleccione un doctor</option>";
-          doctores.forEach(doc => {
-            selectDoc.innerHTML += `<option value="${doc.id}">${doc.nombre}</option>`;
-          });
-        })
-        .catch(err => {
-          console.error("Error al cargar doctores:", err);
-          selectDoc.innerHTML = "<option value=''>Error al cargar doctores</option>";
+    const selectEspecialidad = document.getElementById("especialidad");
+    const selectDoctor = document.getElementById("doctor");
+
+    selectEspecialidad.addEventListener("change", function () {
+      const idEsp = this.value;
+      selectDoctor.innerHTML = "<option value=''>Seleccione un doctor</option>";
+      if (!idEsp) {
+        selectDoctor.innerHTML = "<option value=''>Seleccione una especialidad primero</option>";
+        return;
+      }
+
+      // Filtrar doctores
+      const filtrados = doctores.filter(d => d.id_especialidad == idEsp);
+
+      if (filtrados.length > 0) {
+        filtrados.forEach(doc => {
+          const option = document.createElement("option");
+          option.value = doc.id;
+          option.textContent = doc.nombre;
+          selectDoctor.appendChild(option);
         });
-    } else {
-      selectDoc.innerHTML = "<option value=''>Seleccione una especialidad primero</option>";
-    }
-  });
+      } else {
+        selectDoctor.innerHTML = "<option value=''>No hay doctores disponibles</option>";
+      }
+    });
   </script>
 </body>
 </html>

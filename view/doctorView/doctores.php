@@ -1,14 +1,11 @@
 <?php
+require_once '../../src/db.php';
 session_start();
 
-// Verifica si hay sesión iniciada
 $isLogedIn = isset($_SESSION['user_id']);
 $userName = $isLogedIn ? $_SESSION['user_name'] : '';
 $userRole = $isLogedIn ? $_SESSION['user_role'] : null;
 
-require_once '../../src/db.php'; // conexión a la BD
-
-// Obtener doctores con su especialidad (JOIN con tabla especialidades)
 $query = $conn->query("
   SELECT d.id, d.nombre, d.imagen, e.nombre AS especialidad
   FROM doctores d
@@ -24,13 +21,13 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="../style/doctorStyle/doctores.css">
   <title>Gestión de Doctores</title>
 </head>
 
 <body>
-<header class="header">
+  <header class="header">
     <div class="logo">
       <h1>Clínica Central</h1>        
     </div>
@@ -38,14 +35,12 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
     <nav class="nav-links">
       <a href="../index.php">Inicio</a>
       <a href="../turnView/Solicitar_turnos.php">Turnos</a>
-      <?php if ($userRole == 1): ?>
-        <a href="../turnView/Listar_turnos.php">Gestionar</a>
-      <?php endif; ?>
+      <a href="#">Doctores</a>
       <a href="../acerca.php">Acerca de Nosotros</a>
     </nav>
     <?php if (!$isLogedIn): ?>
       <div class="login-btn">
-      <a href="userView/login.html">Ingresar</a>
+      <a href="../userView/login.html">Ingresar</a>
     </div>
     <?php else: ?>
       <div class= "perfil">
@@ -53,23 +48,14 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
     </div>
     <?php endif; ?>
   </header>
-  
-    
-    
-  <?php if (!$isLogedIn): ?>
-  <main class="container mt-5">
-    <h2>⚠️ Para ver los doctores debes estar logueado.</h2>
-  </main>
-  <?php else: ?>
-
 
   <main class="container mt-4">
     <?php if ($userRole == 1): ?>
     <div class="btn">
-    <a href="crear_doctor.php" class="btn btn-success mt-3">➕ Nuevo Doctor</a>
+    <a href="crear_doctor.php" class="btn btn-success mt-3">CRear Doctor</a>
     </div>
     <?php endif; ?>
-    <h2 class="mb-3">👨‍⚕️ Lista de Doctores</h2>
+    <h2 class="mb-3">Lista de Doctores</h2>
     <div class="row">
       <?php foreach ($doctores as $doc): ?>
       <div class="col-md-4 mb-4">
@@ -78,14 +64,16 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
           <div class="card-body">
             <h5 class="card-title"><?= htmlspecialchars($doc['nombre']) ?></h5>
             <p class="card-text"><strong>Especialidad:</strong> <?= htmlspecialchars($doc['especialidad']) ?></p>
-            <a href="../turnView/Solicitar_turnos.php" class="btn btn-outline-primary">Solicitar turno</a>
+                <?php if ($userRole == 2): ?>
+                    <a href="../turnView/Solicitar_turnos.php" class="btn btn-outline-primary">Solicitar turno</a>
+                <?php endif; ?>
           </div>
           <?php if ($userRole == 1): ?>
             <div class="admin-buttons mt-2">
-              <a href="update_Doctor.php?id=<?= $doc['id'] ?>" class="btn btn-sm btn-warning">✏️ Editar</a>
+              <a href="update_Doctor.php?id=<?= $doc['id'] ?>" class="btn btn-sm btn-warning">Editar</a>
               <form action="../../src/doctApi/deleteDoctor.php" method="POST" style="display:inline;">
                 <input type="hidden" name="id" value="<?= $doc['id'] ?>">
-                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este doctor?');">🗑️ Eliminar</button>
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este doctor?');">Eliminar</button>
               </form>
             </div>
           <?php endif; ?>
@@ -94,24 +82,23 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
       <?php endforeach; ?>
     </div>
   </main>
-  <?php endif; ?>
 
   <footer class="footer mt-5">
     <div class="footer-container">
       <div class="footer-info">
-        <h3>Clínica Central</h3>
-        <p>Av. San Martín 1234, Buenos Aires</p>
-        <p>Tel: (011) 4567-8900</p>
-        <p>Email: contacto@saludtotal.com</p>
+         <h3>Clínica Central</h3>
+        <p>📍 Dirección: Pichincha 1890, CABA</p>
+        <p>📞 Teléfono: 11 2233-4455</p></p>
+        <p>Email: contacto@clinicacentral.com</p>
       </div>
 
       <div class="footer-links">
         <h4>Enlaces útiles</h4>
         <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Solicitar Turno</a></li>
-          <li><a href="#">Contacto</a></li>
-          <li><a href="#">Nosotros</a></li>
+          <li><a href="../index.php">Inicio</a></li>
+          <li><a href="../turnView/Solicitar_turnos.php">Turnos</a></li>
+          <li><a href="../doctorView/doctores.php">Doctores</a></li>
+          <li><a href="../acerca.php">Acerca de Nostros</a></li>
         </ul>
       </div>
 
