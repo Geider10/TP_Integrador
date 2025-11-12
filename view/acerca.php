@@ -29,9 +29,6 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
             <a href="index.php">Inicio</a>
             <a href="turnView/Solicitar_turnos.php">Turnos</a>
             <a href="doctorView/doctores.php">Doctores</a>
-            <?php if ($userRole == 1): ?>
-            <a href="turnView/Listar_turnos.php">Gestionar</a>
-            <?php endif; ?>
             <a href="#">Acerca de Nosotros</a>
         </nav>
         <?php if (!$isLogedIn): ?>

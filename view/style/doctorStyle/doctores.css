@@ -192,8 +192,8 @@ main {
 
 /* Footer*/
 .footer {
-  background-color: #046380;
-  color: #fff;
+  background-color: #80CEFF;
+  color: #333;
   padding: 40px 20px 10px;
   font-family: Arial, sans-serif;
 }
@@ -221,12 +221,12 @@ main {
 }
 
 .footer-links a {
-  color: #cce7f0;
+  color: #4e4e4e;;
   text-decoration: none;
 }
 
 .footer-links a:hover {
-  color: #fff;
+  color: #333;
   text-decoration: underline;
 }
 
@@ -242,9 +242,9 @@ main {
 
 .footer-bottom {
   text-align: center;
-  border-top: 1px solid #0a6c8b;
+  border-top: 1px solid #6b7280;
   margin-top: 20px;
   padding-top: 10px;
   font-size: 14px;
-  color: #d0e7ee;
+  color: #333;
 }

@@ -28,58 +28,57 @@ $turnosUser = $conn->query("SELECT t.id ,e.nombre AS especialidad, d.nombre AS d
 </head>
 <body>
   <header class="header">
-  <div>
-      <a href="../index.php">
-          <h2><- Clínica Central</h2> 
+    <div class="header-content">
+      <a href="../index.php" class="back-link">
+        ← Clínica Central
       </a>    
-  </div>
+    </div>
   </header>
 
-  <h2>Perfil</h2>
-  <div class="profile-container"> 
-    <img src="../img/usuario.jpg" alt="User Avatar" width="150" height="150">
-    <p>Nombre: <?= $name ?></p>
-    <p>Apellido: <?= $lastName?></p>
-    <p>Email: <?= $email?></p>
-    <div class="profile-actions">
-      <a href="../../src/userApi/logout.php" class="btn-logout">Cerrar sesión</a>
-      <a href="./updateUser.php" class="btn-edit">Editar datos</a>
-      <a href="../../src/userApi/delete.php?id=<?= $id?>"class="btn-delete">Eliminar cuenta</a>
-    </div>
-  </div>
+  <main class="main-content">
+    <section class="profile-container"> 
+      <img src="../img/usuario.jpg" alt="User Avatar" class="profile-avatar">
+      <h2>Perfil</h2>
+      <p><strong>Nombre:</strong> <?= htmlspecialchars($name) ?></p>
+      <p><strong>Apellido:</strong> <?= htmlspecialchars($lastName) ?></p>
+      <p><strong>Email:</strong> <?= htmlspecialchars($email) ?></p>
 
-  <?php if ($userRole == 2): ?>
-    <h2>Turnos Registrados</h2>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Especialidad</th>
-          <th>Doctor</th>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody id="tablaTurnos">
-        <?php while ($turno = $turnosUser->fetch_assoc()): ?>
-          <tr>
-            <td><?= htmlspecialchars($turno['especialidad']) ?></td>
-            <td><?= htmlspecialchars($turno['doctor']) ?></td>
-            <td><?= htmlspecialchars($turno['fecha']) ?></td>
-            <td><?= htmlspecialchars($turno['hora']) ?></td>
-            <td>
-                <button class="btn-edit" 
-                  data-id="<?= $row['id'] ?>" 
-                  data-name="<?= $row['nombre'] ?>">
-                  Editar
-                </button>
-              <a class="btn-delete" href="../../src/turnApi/eliminar_turnos.php?id=<?= $turno['id'] ?>">Cancelar</a>
-            </td>
-          </tr>
-        <?php endwhile; ?>
-      </tbody>
-    </table>
-  <?php endif; ?>
+      <div class="profile-actions">
+        <a href="../../src/userApi/logout.php" class="btn btn-logout">Cerrar sesión</a>
+        <a href="./updateUser.php" class="btn btn-edit">Editar datos</a>
+        <a href="../../src/userApi/delete.php?id=<?= $id?>" class="btn btn-delete">Eliminar cuenta</a>
+      </div>
+    </section>
 
+    <?php if ($userRole == 2): ?>
+      <section class="turnos-section">
+        <h2>Mis Turnos</h2>
+        <table class="turnos-table">
+          <thead>
+            <tr>
+              <th>Especialidad</th>
+              <th>Doctor</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php while ($turno = $turnosUser->fetch_assoc()): ?>
+              <tr>
+                <td><?= htmlspecialchars($turno['especialidad']) ?></td>
+                <td><?= htmlspecialchars($turno['doctor']) ?></td>
+                <td><?= htmlspecialchars($turno['fecha']) ?></td>
+                <td><?= htmlspecialchars($turno['hora']) ?></td>
+                <td>
+                  <a class="btn btn-delete" href="../../src/turnApi/eliminar_turnos.php?id=<?= $turno['id'] ?>">Cancelar</a>
+                </td>
+              </tr>
+            <?php endwhile; ?>
+          </tbody>
+        </table>
+      </section>
+    <?php endif; ?>
+  </main>
 </body>
 </html>

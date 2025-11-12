@@ -28,12 +28,9 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
     </div>
 
     <nav class="nav-links">
-      <a href="index.php">Inicio</a>
+      <a href="#">Inicio</a>
       <a href="turnView/Solicitar_turnos.php">Turnos</a>
       <a href="doctorView/doctores.php">Doctores</a>
-      <?php if ($userRole == 1): ?>
-        <a href="turnView/Listar_turnos.php">Gestionar</a>
-      <?php endif; ?>
       <a href="acerca.php">Acerca de Nosotros</a>
     </nav>
     <?php if (!$isLogedIn): ?>
@@ -50,7 +47,7 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
   <main>
     <section class="hero">
       <h1>Hospital Central</h1>
-      <p>Atención médica de calidad para vos y tu familia. Podés solicitar turnos online de forma rápida y sencilla.</p>
+      <p> En Clínica Central, gestionamos cada consulta y turno con tecnología moderna, atención humana y eficiencia.</p>
     </section>
 
   <section class="servicios">
@@ -106,10 +103,7 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
 
 <section class="stats-section">
   <h2 class="stats-title">SOMOS LÍDERES EN GESTIÓN CLÍNICA</h2>
-  <p class="stats-subtitle">
-    En Clínica Central, gestionamos cada consulta y turno con tecnología moderna, atención humana y eficiencia.
-  </p>
-
+  
   <div class="stats-grid">
     <div class="stat-card">
       <h3>+2.000</h3>
