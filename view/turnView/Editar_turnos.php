@@ -17,7 +17,7 @@ $doctores = $conn->query("SELECT * FROM doctores");
   <main>
     <h2>Editar Turno</h2>
 
-    <form method="POST" action="../../src/turnApi/editar_turnos.php">
+    <form method="POST" action="../../src/turnAPi/editar_turnos.php">
       <input type="hidden" name="id" value="<?= $turno['id'] ?>">
 
       <label for="id_doctor">Doctor:</label>
