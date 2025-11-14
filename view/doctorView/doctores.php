@@ -21,7 +21,6 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="../style/doctorStyle/doctores.css">
   <title>Gestión de Doctores</title>
 </head>
@@ -49,39 +48,47 @@ $doctores = $query->fetch_all(MYSQLI_ASSOC);
     <?php endif; ?>
   </header>
 
-  <main class="container mt-4">
+ <main class="main-doctores">
     <?php if ($userRole == 1): ?>
-    <div class="btn">
-    <a href="crear_doctor.php" class="btn btn-success mt-3">CRear Doctor</a>
+    <div class="add-doctor-container">
+        <a href="crear_doctor.php" class="add-doctor-btn">Crear Doctor</a>
     </div>
     <?php endif; ?>
-    <h2 class="mb-3">Lista de Doctores</h2>
+    <h2>Lista de Doctores</h2>
     <div class="row">
-      <?php foreach ($doctores as $doc): ?>
-      <div class="col-md-4 mb-4">
-        <div class="card shadow">
-          <img src="<?= htmlspecialchars($doc['imagen']) ?>" class="card-img-top" alt="Doctor">
-          <div class="card-body">
-            <h5 class="card-title"><?= htmlspecialchars($doc['nombre']) ?></h5>
-            <p class="card-text"><strong>Especialidad:</strong> <?= htmlspecialchars($doc['especialidad']) ?></p>
+        <?php foreach ($doctores as $doc): ?>
+        <div class="card">
+            <img src="<?= htmlspecialchars($doc['imagen']) ?>" alt="Doctor" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title"><?= htmlspecialchars($doc['nombre']) ?></h5>
+                <p class="card-text">
+                    <strong>Especialidad:</strong> <?= htmlspecialchars($doc['especialidad']) ?>
+                </p>
                 <?php if ($userRole == 2): ?>
-                    <a href="../turnView/Solicitar_turnos.php" class="btn btn-outline-primary">Solicitar turno</a>
+                    <a href="../turnView/Solicitar_turnos.php" class="btn-outline-primary">
+                        Solicitar turno
+                    </a>
                 <?php endif; ?>
-          </div>
-          <?php if ($userRole == 1): ?>
-            <div class="admin-buttons mt-2">
-              <a href="update_Doctor.php?id=<?= $doc['id'] ?>" class="btn btn-sm btn-warning">Editar</a>
-              <form action="../../src/doctApi/deleteDoctor.php" method="POST" style="display:inline;">
-                <input type="hidden" name="id" value="<?= $doc['id'] ?>">
-                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que deseas eliminar este doctor?');">Eliminar</button>
-              </form>
             </div>
-          <?php endif; ?>
+            <?php if ($userRole == 1): ?>
+            <div class="admin-buttons">
+                <a href="update_Doctor.php?id=<?= $doc['id'] ?>" class="admin-btn edit-btn">
+                    Editar
+                </a>
+                <form action="../../src/doctApi/deleteDoctor.php" method="POST">
+                    <input type="hidden" name="id" value="<?= $doc['id'] ?>">
+                    <button type="submit" class="admin-btn delete-btn"
+                        onclick="return confirm('¿Seguro que deseas eliminar este doctor?');">
+                        Eliminar
+                    </button>
+                </form>
+            </div>
+            <?php endif; ?>
         </div>
-      </div>
-      <?php endforeach; ?>
+        <?php endforeach; ?>
     </div>
-  </main>
+</main>
+
 
   <footer class="footer mt-5">
     <div class="footer-container">

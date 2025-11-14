@@ -17,11 +17,8 @@ $doctores = $conn->query("SELECT * FROM doctores");
   <main>
     <h2>Editar Turno</h2>
 
-    <form method="POST" action="../../src/turnApi/editar_turnos.php">
+    <form method="POST" action="../../src/turnAPi/editar_turnos.php">
       <input type="hidden" name="id" value="<?= $turno['id'] ?>">
-
-      <label for="paciente">Paciente:</label>
-      <input type="text" id="paciente" name="paciente" value="<?= htmlspecialchars($turno['paciente']) ?>" required>
 
       <label for="id_doctor">Doctor:</label>
       <select id="id_doctor" name="id_doctor" required>
@@ -41,7 +38,7 @@ $doctores = $conn->query("SELECT * FROM doctores");
       <button type="submit">Guardar cambios</button>
     </form>
 
-    <a href="listar_turnos.php" class="volver">← Volver</a>
+    <a href="../../view/userView/profile.php" class="volver">← Volver</a>
   </main>
 </body>
 </html>

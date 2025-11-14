@@ -28,7 +28,7 @@ $nota = trim($_POST["nota"]);
 $fecha = $_POST["fecha"] ;
 $hora = $_POST["hora"];
 
-if ($id_especialidad && $id_doctor && $nota && $fecha && $hora) {
+if ($id_especialidad && $id_doctor && $fecha && $hora) {
     $stmt = $conn->prepare("INSERT INTO turnos (id_especialidad, id_doctor, nota, fecha, hora, id_user) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("iisssi", $id_especialidad, $id_doctor, $nota, $fecha, $hora, $id_user);
 

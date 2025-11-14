@@ -9,10 +9,4 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
     
 }
-// JS eventos: mensaje
-//no hace falta subirlo el proyecto filezilla,
-//comprimir el TP en un zip,
-//exportar la BD en un archivo sql,
-//indicar la ruta
-
 

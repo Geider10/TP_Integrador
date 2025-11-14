@@ -67,16 +67,14 @@ header {
   background-color: #174e91;
 }
 
-/* --- Contenido principal --- */
 main.main {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 80px); /* Ocupa todo el alto menos el header */
-  padding-top: 100px; /* Espacio para que no se tape el header */
+  min-height: calc(100vh - 80px); 
+  padding-top: 100px; 
 }
 
-/* --- Tarjeta del formulario --- */
 .card {
   width: 100%;
   max-width: 440px;
@@ -93,7 +91,6 @@ h1 {
   color: #333;
 }
 
-/* --- Inputs y labels --- */
 label {
   display: block;
   font-size: 13px;
@@ -118,7 +115,6 @@ select:focus {
   border-color: #007bff;
 }
 
-/* --- Botón principal --- */
 button[type="submit"] {
   display: block;
   width: 100%;
@@ -150,10 +146,9 @@ textarea {
 }
 
 textarea:focus {
-  border-color: #007bff; /* color del borde al enfocar */
+  border-color: #007bff;
   box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
 }
-/* --- Responsive --- */
 @media (max-width: 480px) {
   header {
     flex-direction: column;

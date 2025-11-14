@@ -46,7 +46,7 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
     <main class="about-us">
   <div class="about-container">
     <div class="about-text">
-      <h2>👩‍⚕️ Acerca de Nosotros</h2>
+      <h2>Acerca de Nosotros</h2>
       <p>
         En <strong>Clinca Central</strong> nos dedicamos a ofrecer atención médica de calidad, priorizando el bienestar de nuestros pacientes.
         Contamos con un equipo de profesionales comprometidos con la salud, la prevención y el cuidado integral.

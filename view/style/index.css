@@ -71,7 +71,6 @@ body {
 .perfil a:hover {
   background-color: #0056b3;
 }
-/* Hero */
 .hero {
   background: linear-gradient(135deg, #4db6ac, #81d4fa);
   color: white;
@@ -97,7 +96,6 @@ body {
 .hero .btn:hover {
   background: #1b5e20;
 }
-/* Secciones */
 main section {
   padding: 3rem 2rem;
   text-align: center;
@@ -107,7 +105,6 @@ section h2 {
   color: #00796b;
   margin-bottom: 1.5rem;
 }
-/* ======== SECCIÓN SERVICIOS ======== */
 .servicios {
   background: linear-gradient(to bottom right, #f4f8fb, #e8f0ff);
   padding: 80px 40px;
@@ -147,14 +144,14 @@ section h2 {
   margin-top: 20px;
 }
 .servicio-card i {
-  font-size: 3rem;       /* Tamaño grande */
-  color: #007bff;          /* Color principal */
+  font-size: 3rem;      
+  color: #007bff;         
   margin-bottom: 1rem;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .servicio-card:hover i {
-  color: #0056b3;          /* Azul más oscuro en hover */
+  color: #0056b3;     
   transform: scale(1.1);
 }
 .servicio-card h3 {
@@ -170,8 +167,6 @@ section h2 {
   line-height: 1.6;
 }
 
-
-/*SECCIÓN SEDES  */
 .sedes {
   background-color: #f4f8fb;
   padding: 80px 40px;
@@ -240,7 +235,6 @@ section h2 {
 }
 
 
-/* Footer */
 .footer {
   background-color: #80CEFF;
   color: #333;
@@ -301,6 +295,7 @@ section h2 {
   font-size: 14px;
   color: #333;
 }
+
 /* Estadisticas */
 .stats-section {
   background-color: #80CEFF;

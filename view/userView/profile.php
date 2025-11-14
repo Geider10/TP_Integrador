@@ -71,6 +71,7 @@ $turnosUser = $conn->query("SELECT t.id ,e.nombre AS especialidad, d.nombre AS d
                 <td><?= htmlspecialchars($turno['fecha']) ?></td>
                 <td><?= htmlspecialchars($turno['hora']) ?></td>
                 <td>
+                  <a class="btn btn-edit" href="../../view/turnView/Editar_turnos.php?id=<?= $turno['id'] ?>">Editar</a>
                   <a class="btn btn-delete" href="../../src/turnApi/eliminar_turnos.php?id=<?= $turno['id'] ?>">Cancelar</a>
                 </td>
               </tr>

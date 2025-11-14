@@ -1,9 +1,10 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 body {
   background-color: #f9fdfc;
   color: #333;
@@ -13,7 +14,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #80CEFF;
-  padding:20px 30px;
+  padding: 20px 30px;
   width: 100%;
   height: 80px;
 }
@@ -33,164 +34,145 @@ body {
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: 0.3s;
 }
 
 .nav-links a:hover {
   color: #007bff;
 }
-.login-btn{
-  display: block;
-}
-.login-btn a {
-  display: block;
-  text-decoration: none;
-  background-color: #007bff;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s;
-}
 
-.login-btn a:hover {
-  background-color: #0056b3;
-}
-.perfil a{
-   display: block;
+.login-btn a,
+.perfil a {
+  display: block;
   text-decoration: none;
   background-color: #007bff;
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
-  cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s;
+  transition: 0.3s;
 }
+.login-btn a:hover,
 .perfil a:hover {
   background-color: #0056b3;
 }
-/* ==========================
-   MAIN
-========================== */
-main {
-  font-family: Arial, sans-serif;
+/* DOCTORES */
+.main-doctores {
   background-color: #f4f6f8;
-  padding: 20px;
+  padding: 40px 20px;
   margin-top: 100px;
-  flex: 1;
 }
-.mb-3{
-  margin-left: 200px;
-  padding: 10px;
+
+.main-doctores h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #003366;
 }
-/* ==========================
-   TARJETAS DE DOCTORES (ANCHO COMPLETO)
-========================== */
-.container .row {
-  display: flex;
-  flex-direction: row; /* 🔹 una debajo de otra */
+
+.add-doctor-container {
+  margin-bottom: 25px;
+}
+
+.add-doctor-btn {
+  background: green;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.add-doctor-btn:hover {
+  background: #0a8a0a;
+}
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
-  width: 100%;
-  padding: 0 30px;
 }
 
 .card {
-  background-color: #fff;
-  border: none;
-  border-radius: 12px;
+  background: white;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 100%; /* 🔹 ocupa todo el ancho disponible */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
 }
 
 .card-img-top {
   width: 100%;
-  height: 320px; /* 🔹 altura fija uniforme */
+  height: 260px;
   object-fit: cover;
-  border-bottom: 1px solid #ddd;
 }
 
 .card-body {
-  padding: 20px 25px;
-  text-align: left;
+  padding: 18px 22px;
 }
 
 .card-title {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 8px;
   color: #003366;
-  margin-bottom: 5px;
 }
 
 .card-text {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #555;
   margin-bottom: 15px;
 }
-
 .btn-outline-primary {
-  border-radius: 8px;
-  font-size: 0.9rem;
-  padding: 8px 14px;
+  display: block;
+  text-align: center;
+  background: transparent;
+  border: 2px solid #007bff;
+  padding: 10px;
+  border-radius: 10px;
+  color: #007bff;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-outline-primary:hover {
+  background: #007bff;
+  color: white;
 }
 
 .admin-buttons {
+  padding: 12px 20px;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  padding: 15px 25px;
-  background-color: #fafafa;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  margin-top: auto;
 }
 
-.admin-buttons .btn {
-  font-size: 0.85rem;
-  border-radius: 6px;
-  padding: 6px 12px;
-}
-
-/* ==========================
-   BOTONES CRUD
-========================== */
-.btn button {
-  margin-right: 10px;
-  padding: 10px;
+.admin-btn {
+  padding: 6px 14px;
   border: none;
   color: white;
+  font-size: 0.85rem;
   border-radius: 6px;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.agregar { background-color: green; }
-.borrar { background-color: red; }
-.editar { background-color: blue; }
+.edit-btn { background: #007bff; }
+.edit-btn:hover { background: #007bff; }
 
-.agregar:hover, .borrar:hover, .editar:hover {
-  background-color: white;
-  color: black;
-}
+.delete-btn { background: #d33; }
+.delete-btn:hover { background: #a00; }
 
-/* ==========================
-   FORMULARIO
-========================== */
-.formulario {
-  border: 1px solid #ccc;
-  padding: 15px;
-  width: 300px;
-  border-radius: 8px;
-  margin-top: 20px;
-  background-color: #f9f9f9;
-}
 
-/* Footer*/
 .footer {
   background-color: #80CEFF;
   color: #333;
