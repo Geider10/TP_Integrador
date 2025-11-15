@@ -15,7 +15,7 @@ $especialidades = $conn->query("SELECT * FROM especialidades ORDER BY nombre ASC
 </head>
 <body>
   <div class="editar-container">
-    <h2>✏️ Editar Doctor</h2>
+    <h2>Editar Doctor</h2>
     <form method="POST" action="../../src/doctApi/updateDoctor.php">
       <input type="hidden" name="id" value="<?= $doctor['id'] ?>">
 

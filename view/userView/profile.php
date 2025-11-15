@@ -18,6 +18,8 @@ $turnosUser = $conn->query("SELECT t.id ,e.nombre AS especialidad, d.nombre AS d
                                   JOIN doctores d ON t.id_doctor = d.id
                                   WHERE t.id_user = $id
                                   ORDER BY t.fecha, t.hora");
+
+$specialtyList = $conn->query("SELECT * FROM especialidades");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -80,6 +82,59 @@ $turnosUser = $conn->query("SELECT t.id ,e.nombre AS especialidad, d.nombre AS d
         </table>
       </section>
     <?php endif; ?>
+
+    <?php if ($userRole == 1): ?>
+      <section class="turnos-section">
+        <div class="titulo-table">
+          <h2>Lista especialidades</h2>
+          <button id="btnAdd" class="btn btn-edit">Agregar</button>
+        </div>
+        
+        <table class="turnos-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php while ($item = $specialtyList->fetch_assoc()): ?>
+              <tr>
+                <td><?= htmlspecialchars($item['nombre']) ?></td>
+                <td>
+                  <button class="btn btn-edit" 
+                    data-id="<?= $item['id'] ?>" 
+                    data-name="<?= $item['nombre'] ?>">
+                    Editar
+                  </button>
+                  <a class="btn btn-delete" href="../../src/specialtyApi/delete.php?id=<?= $item['id'] ?>">Eliminar</a>
+                </td>
+              </tr>
+            <?php endwhile; ?>
+          </tbody>
+        </table>
+      </section>
+    <?php endif; ?>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Editar Especialidad</h3>
+            <form id="formEdit" method="POST" action="../../src/specialtyApi/add.php">
+                <input type="hidden" name="id" id="inputId">
+                <div> 
+                   <label>Nombre</label>
+                   <input type="text" name="nombre" id="inputName" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-logout">Guardar Cambios</button>
+                    <button type="button" id="btnClose" class="btn btn-delete">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./specialtyModal.js"></script>
   </main>
 </body>
 </html>

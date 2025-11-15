@@ -7,7 +7,7 @@ $deleteQuery = "DELETE FROM especialidades WHERE id=$id";
 $result = $conn->query($deleteQuery);
 
 if ($result) {
-    header("Location: ../../view/specialtyView/table.php");
+    header("Location: ../../view/userView/profile.php");
     exit;
 } else {
     echo "Error al eliminar: " . $conn->error;

@@ -45,8 +45,10 @@ $nameUser = $isLogedIn ? $_SESSION["user_name"] : null;
   
   <main>
     <section class="hero">
-      <h1>Clínica Central</h1>
-      <p> Nosotros gestionamos cada consulta y turno con tecnología moderna, atención humana y eficiencia.</p>
+      <div class="hero-content">
+        <h1>Clínica Central</h1>
+        <p> Nosotros gestionamos cada consulta y turno con tecnología moderna, atención humana y eficiencia.</p>
+      </div>
     </section>
 
   <section class="servicios">

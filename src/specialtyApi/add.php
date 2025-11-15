@@ -13,7 +13,7 @@ if (!empty($id)){
 
 $result = $conn->query($typeQuery);
 if ($result) {
-    header("Location: ../../view/specialtyView/table.php");
+    header("Location: ../../view/userView/profile.php");
     exit;
 } else {
     echo "Error al agregar: " . $conn->error;
